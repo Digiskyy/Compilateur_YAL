@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jflex-1.6.1">
+    <CLASSES>
+      <root url="jar:///opt/depot/compilation/jflex-1.6.1.jar!/" />
+      <root url="jar:///opt/depot/compilation/java-cup-11a.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
