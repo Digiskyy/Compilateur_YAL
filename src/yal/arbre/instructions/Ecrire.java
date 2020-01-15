@@ -16,8 +16,9 @@ public class Ecrire extends Instruction {
     }
 
     @Override
-    public String toMIPS() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String toMIPS()
+    {
+        return exp.toMIPS() + "\n\tsyscall # Appel système pour l'écriture\n"; // Appel système à la fin de l'écriture
     }
 
 }

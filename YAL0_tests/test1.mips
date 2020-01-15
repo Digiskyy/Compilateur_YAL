@@ -1,0 +1,8 @@
+.text
+main :
+	li $v0, 1
+	li $a0, 5
+	syscall
+end :
+	li $v0, 10
+	syscall

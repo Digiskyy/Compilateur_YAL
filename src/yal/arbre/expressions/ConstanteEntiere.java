@@ -7,8 +7,12 @@ public class ConstanteEntiere extends Constante {
     }
 
     @Override
-    public String toMIPS() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String toMIPS()
+    {
+        // Ecriture en assembleur MIPS d'une constante entière
+        return "# Ecriture d'une constante entière\n" +
+                "\tli $v0, 1\n" +
+                "\tli $a0, " + cste;
     }
 
 }
