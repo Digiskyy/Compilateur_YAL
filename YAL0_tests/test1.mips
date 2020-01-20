@@ -1,8 +1,11 @@
+# Début d'un programme
 .text
 main :
+# Ecriture d'une constante entière
 	li $v0, 1
 	li $a0, 5
-	syscall
+	syscall # Appel système pour l'écriture
+# Fin du programme
 end :
 	li $v0, 10
 	syscall
