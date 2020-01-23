@@ -37,6 +37,7 @@ csteE = [0-9]+
 
 finDeLigne = \r|\n
 espace = {finDeLigne}  | [ \t\f]
+commentaire = [/][/].*
 
 %%
 
@@ -45,6 +46,7 @@ espace = {finDeLigne}  | [ \t\f]
 "fin"              	   { return symbol(CodesLexicaux.FIN); }
 
 "ecrire"               { return symbol(CodesLexicaux.ECRIRE); }
+"entier"               { return symbol(CodesLexicaux.TYPE); }
 
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 
@@ -53,5 +55,5 @@ espace = {finDeLigne}  | [ \t\f]
 {idf}      	           { return symbol(CodesLexicaux.IDF, yytext()); }
 
 {espace}               { }
+{commentaire}          { }
 .                      { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }
-
