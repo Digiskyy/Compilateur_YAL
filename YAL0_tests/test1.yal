@@ -2,5 +2,5 @@ programme test1
 debut
     //Je ne veux pas voir ce commentaire
     entier var;
-	ecrire 5;
+    ecrire 5;
 fin

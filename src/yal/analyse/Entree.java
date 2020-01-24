@@ -1,6 +1,7 @@
 package yal.analyse;
 
-public class Entree {
+public class Entree
+{
     private String nomVariable;
 
     public Entree(String nom){
@@ -8,6 +9,12 @@ public class Entree {
     }
 
     public String getNomVariable() {
+        return nomVariable;
+    }
+
+    @Override
+    public String toString()
+    {
         return nomVariable;
     }
 }

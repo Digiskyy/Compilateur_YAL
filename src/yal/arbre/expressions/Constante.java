@@ -4,13 +4,15 @@ public abstract class Constante extends Expression {
 
     protected String cste ;
     
-    protected Constante(String texte, int n) {
+    protected Constante(String texte, int n)
+    {
         super(n) ;
         cste = texte ;
     }
     
     @Override
-    public void verifier() {
+    public void verifier()
+    {
     }
 
     @Override

@@ -63,7 +63,7 @@ terminal String    IDF, CSTENTIERE, TYPE;
 
 non terminal ArbreAbstrait PROG, LINST, INST ;
 non terminal Expression EXP ;
-non terminal Instruction DECL;
+non terminal Instruction DECL, DECL_VAR;
 
 
 /* ----------------------------Grammar Section-------------------- */
@@ -86,14 +86,20 @@ LINST   ::=     LINST:li  INST:i
 
 INST    ::=     ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Ecrire(e, eleft + 1) ; :}
+        |
+                DECL
                 ;
 
-EXP    ::=     CSTENTIERE:c
+EXP    ::=      CSTENTIERE:c
                 {: RESULT = new ConstanteEntiere(c, cleft + 1) ; :}
                 ;
 
-DECL   ::=   TYPE:t IDF:i POINTVIRGULE
-               {: Entree e = new Entree(i);
-                  Symbole s = new Symbole(t);
-                  TDS.getInstance().ajouter(e, s); :}
-                  ;
+DECL   ::=      DECL_VAR
+                ;
+
+DECL_VAR   ::=  TYPE:t IDF:i POINTVIRGULE
+                {: Entree e = new Entree(i);
+                   Symbole s = new Symbole(t);
+                   TDS.getInstance().ajouter(e, s); :}
+                ;
+
