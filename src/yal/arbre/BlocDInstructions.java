@@ -41,14 +41,14 @@ public class BlocDInstructions extends ArbreAbstrait {
         StringBuilder strB = new StringBuilder("# Début d'un programme\n" +
                                                 ".text\n" +
                                                 "main :\n"+
-                "# Initialiser $s7 (registre 7) avec $sp\n" +
-                "    move $s7, $sp\n");
+                                                "#Initialiser $s7 (registre 7) avec $sp\n" +
+                                                "\tmove $s7, $sp\n\n");
 
         for(ArbreAbstrait arb : programme)
         {
             if(arb instanceof Instruction && !premiereInstruction){
                 strB.append("# Réserver la place pour "+ TDS.getInstance().getCpt()+" variables dans $s7\n" +
-                        "    add $sp, $sp,"+ TDS.getInstance().getCpt()*-4+"\n");
+                        "    add $sp, $sp,"+ TDS.getInstance().getCpt()*-4+"\n\n");
                 premiereInstruction = true;
             }
             strB.append(arb.toMIPS());

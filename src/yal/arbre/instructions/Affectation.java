@@ -29,9 +29,9 @@ public class Affectation extends Instruction {
     public String toMIPS() {
         verifier();
         StringBuilder str = new StringBuilder();
-        str.append("#Affectation\n");
-        str.append(" li $v0, "+partieD+"\n");
-        str.append("sw $v0, "+deplacement+"($s7)\n");
+        str.append("# Affectation " + partieG + " = " + partieD + "\n");
+        str.append("\tli $v0, "+partieD+"\n");
+        str.append("\tsw $v0, "+deplacement+"($s7)\n\n");
         return str.toString();
     }
 }
