@@ -2,6 +2,6 @@ programme test1
 debut
     entier var;
     entier lol;
-    entier jojo;
+    booleen eskecayvrai;
     ecrire 5;
 fin
