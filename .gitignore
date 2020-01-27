@@ -2,3 +2,6 @@
 # Default ignored files
 */workspace.xml
 */build.xml
+*.idea
+*Analyseur*
+*CodesLexicaux*
