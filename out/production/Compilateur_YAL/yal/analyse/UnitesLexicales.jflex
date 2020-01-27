@@ -2,15 +2,15 @@ package yal.analyse ;
 
 import java_cup.runtime.*;
 import yal.exceptions.AnalyseLexicaleException;
-      
+
 %%
-   
+
 %class AnalyseurLexical
 %public
 
 %line
 %column
-    
+
 %type Symbol
 %eofval{
         return symbol(CodesLexicaux.EOF) ;
@@ -50,7 +50,7 @@ commentaire = [/][/].*
 "booleen"               { return symbol(CodesLexicaux.TYPE, yytext()); }
 "reel"                  { return symbol(CodesLexicaux.TYPE, yytext()); }
 
-
+"="                    { return symbol(CodesLexicaux.EGAL); }
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }

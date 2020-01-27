@@ -1,14 +1,19 @@
 # Début d'un programme
 .text
 main :
-# Ecriture d'une constante entière
-	li $v0, 1
-	li $a0, 5
-	syscall # Appel système pour l'écriture
-# Ecriture d'une constante entière
-	li $v0, 1
-	li $a0, 7
-	syscall # Appel système pour l'écriture
+# Initialiser $s7 (registre 7) avec $sp
+    move $s7, $sp
+# Réserver la place pour 3 variables dans $s7
+    add $sp, $sp,-12
+#Affectation
+ li $v0, 20
+sw $v0, -4($s7)
+#Affectation
+ li $v0, 10
+sw $v0, 0($s7)
+#Affectation
+ li $v0, 5
+sw $v0, -8($s7)
 # Fin du programme
 end :
 	li $v0, 10

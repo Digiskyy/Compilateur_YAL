@@ -1,5 +1,8 @@
 package yal.arbre;
 
+import yal.analyse.TDS;
+import yal.arbre.instructions.Instruction;
+
 import java.util.ArrayList;
 
 /**
@@ -11,6 +14,7 @@ import java.util.ArrayList;
 public class BlocDInstructions extends ArbreAbstrait {
     
     protected ArrayList<ArbreAbstrait> programme ;
+    private boolean premiereInstruction = false;
 
     public BlocDInstructions(int n) {
         super(n) ;
@@ -36,10 +40,17 @@ public class BlocDInstructions extends ArbreAbstrait {
     {
         StringBuilder strB = new StringBuilder("# Début d'un programme\n" +
                                                 ".text\n" +
-                                                "main :\n");
+                                                "main :\n"+
+                "# Initialiser $s7 (registre 7) avec $sp\n" +
+                "    move $s7, $sp\n");
 
         for(ArbreAbstrait arb : programme)
         {
+            if(arb instanceof Instruction && !premiereInstruction){
+                strB.append("# Réserver la place pour "+ TDS.getInstance().getCpt()+" variables dans $s7\n" +
+                        "    add $sp, $sp,"+ TDS.getInstance().getCpt()*-4+"\n");
+                premiereInstruction = true;
+            }
             strB.append(arb.toMIPS());
         }
         strB.append("# Fin du programme\n" +

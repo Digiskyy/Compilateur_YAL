@@ -12,11 +12,10 @@ public class TDS
 {
     private static TDS instance  = new TDS();
     private HashMap<Entree, Symbole> table;
-    private int cptDeplacement;
+    private int cpt = 0;
 
     private TDS()
     {
-        cptDeplacement = 0;
         table = new HashMap<Entree, Symbole>();
     }
 
@@ -37,6 +36,7 @@ public class TDS
             throw new AnalyseSyntaxiqueException("Une variable ne peut pas être déclarée deux fois.");
         }
         table.put(e,s);
+        cpt++;
     }
 
     /**
@@ -49,13 +49,17 @@ public class TDS
         return table.get(e);
     }
 
+    public int tailleVariable(){
+        return table.size()*-4;
+    }
+
     public int getTailleZoneVariable()
     {
         return 0;
     }
 
-    public int getCptDeplacement()
+    public int getCpt()
     {
-        return cptDeplacement;
+        return cpt;
     }
 }

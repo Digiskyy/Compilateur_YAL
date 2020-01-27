@@ -56,7 +56,7 @@ parser code {:
 
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL;
 terminal String    IDF, CSTENTIERE, TYPE;
 
 /* Non terminals used in the grammar section.  */
@@ -64,7 +64,7 @@ terminal String    IDF, CSTENTIERE, TYPE;
 non terminal ArbreAbstrait PROG;
 non terminal BlocDInstructions LINST, LDECL;
 non terminal Expression EXP ;
-non terminal Instruction INST, DECL, DECL_VAR;
+non terminal Instruction INST, DECL, DECL_VAR, AFF;
 
 
 /* ----------------------------Grammar Section-------------------- */
@@ -90,6 +90,9 @@ LINST   ::=     LINST:li  INST:i
 
 INST    ::=     ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Ecrire(e, eleft + 1) ; :}
+        |
+                AFF:a
+                {: RESULT = a ; :}
                 ;
 
 EXP    ::=      CSTENTIERE:c
@@ -114,5 +117,9 @@ DECL_VAR   ::=  TYPE:t IDF:i POINTVIRGULE
                 {: Entree e = new Entree(i);
                    Symbole s = new Symbole(t);
                    TDS.getInstance().ajouter(e, s); :}
+                ;
+
+AFF        ::=  IDF:i EGAL EXP:e POINTVIRGULE
+                {: RESULT = new Affectation(i, e) ; :}
                 ;
 

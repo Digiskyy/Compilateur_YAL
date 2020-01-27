@@ -1,12 +1,9 @@
 programme test1
 debut
     entier var;
-    entier lol;
-    booleen eskecayvrai;
-
-    booleen lol;
-    entier lol;
-
-    ecrire 5;
-    ecrire 7;
+    entier x;
+    entier test;
+    x = 20;
+    var = 10;
+    test = 5;
 fin

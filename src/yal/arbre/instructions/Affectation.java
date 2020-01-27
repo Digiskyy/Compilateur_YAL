@@ -1,12 +1,16 @@
 package yal.arbre.instructions;
 
+import yal.analyse.Entree;
+import yal.analyse.Symbole;
+import yal.analyse.TDS;
 import yal.arbre.expressions.Expression;
 
 public class Affectation extends Instruction {
     private String partieG;
     private Expression partieD;
+    private int deplacement;
 
-    protected Affectation(String idf, Expression exp) {
+    public Affectation(String idf, Expression exp) {
         super(exp.getNoLigne());
         partieG = idf;
         partieD = exp;
@@ -15,10 +19,19 @@ public class Affectation extends Instruction {
 
     @Override
     public void verifier() {
+        Entree e = new Entree(partieG);
+        Symbole s = TDS.getInstance().identifier(e);
+
+        deplacement = s.getTaille();
     }
 
     @Override
     public String toMIPS() {
-        return null;
+        verifier();
+        StringBuilder str = new StringBuilder();
+        str.append("#Affectation\n");
+        str.append(" li $v0, "+partieD+"\n");
+        str.append("sw $v0, "+deplacement+"($s7)\n");
+        return str.toString();
     }
 }
