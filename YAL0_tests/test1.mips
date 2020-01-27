@@ -5,7 +5,8 @@ main :
 	move $s7, $sp
 
 # Réserver la place pour 3 variables dans $s7
-    add $sp, $sp,-12
+	add $sp, $sp,-12
+
 # Affectation x = 20
 	li $v0, 20
 	sw $v0, -4($s7)

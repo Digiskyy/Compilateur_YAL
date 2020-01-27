@@ -48,7 +48,7 @@ public class BlocDInstructions extends ArbreAbstrait {
         {
             if(arb instanceof Instruction && !premiereInstruction){
                 strB.append("# Réserver la place pour "+ TDS.getInstance().getCpt()+" variables dans $s7\n" +
-                        "    add $sp, $sp,"+ TDS.getInstance().getCpt()*-4+"\n\n");
+                        "\tadd $sp, $sp,"+ TDS.getInstance().getCpt()*-4+"\n\n");
                 premiereInstruction = true;
             }
             strB.append(arb.toMIPS());
