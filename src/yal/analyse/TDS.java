@@ -12,7 +12,7 @@ public class TDS
 {
     private static TDS instance  = new TDS();
     private HashMap<Entree, Symbole> tableau;
-    int cptDeplacement;
+    private int cptDeplacement;
 
     private TDS()
     {

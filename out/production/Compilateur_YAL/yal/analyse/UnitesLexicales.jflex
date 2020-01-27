@@ -46,7 +46,7 @@ commentaire = [/][/].*
 "fin"              	   { return symbol(CodesLexicaux.FIN); }
 
 "ecrire"               { return symbol(CodesLexicaux.ECRIRE); }
-"entier"               { return symbol(CodesLexicaux.TYPE); }
+"entier"               { return symbol(CodesLexicaux.TYPE, yytext()); }
 
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 

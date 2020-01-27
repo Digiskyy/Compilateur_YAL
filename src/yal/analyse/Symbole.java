@@ -8,9 +8,9 @@ public class Symbole
         booleen,
         reel;
     }
-    public String type;
+    public final String type;
 
-    public Symbole(String type, int n)
+    public Symbole(String type)
     {
         this.type = type;
     }

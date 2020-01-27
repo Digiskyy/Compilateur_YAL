@@ -1,6 +1,7 @@
 programme test1
 debut
-    //Je ne veux pas voir ce commentaire
     entier var;
+    entier lol;
+    entier jojo;
     ecrire 5;
 fin
