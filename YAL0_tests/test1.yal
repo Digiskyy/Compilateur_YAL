@@ -3,5 +3,10 @@ debut
     entier var;
     entier lol;
     booleen eskecayvrai;
+
+    booleen lol;
+    entier lol;
+
     ecrire 5;
+    ecrire 7;
 fin

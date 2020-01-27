@@ -5,6 +5,10 @@ main :
 	li $v0, 1
 	li $a0, 5
 	syscall # Appel système pour l'écriture
+# Ecriture d'une constante entière
+	li $v0, 1
+	li $a0, 7
+	syscall # Appel système pour l'écriture
 # Fin du programme
 end :
 	li $v0, 10

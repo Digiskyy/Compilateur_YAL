@@ -38,7 +38,6 @@ csteE = [0-9]+
 finDeLigne = \r|\n
 espace = {finDeLigne}  | [ \t\f]
 commentaire = [/][/].*
-varType = entier | booleen | reel
 
 %%
 
@@ -47,6 +46,9 @@ varType = entier | booleen | reel
 "fin"              	   { return symbol(CodesLexicaux.FIN); }
 
 "ecrire"               { return symbol(CodesLexicaux.ECRIRE); }
+"entier"                { return symbol(CodesLexicaux.TYPE, yytext()); }
+"booleen"               { return symbol(CodesLexicaux.TYPE, yytext()); }
+"reel"                  { return symbol(CodesLexicaux.TYPE, yytext()); }
 
 
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -57,5 +59,4 @@ varType = entier | booleen | reel
 
 {espace}               { }
 {commentaire}          { }
-{varType}              { return symbol(CodesLexicaux.TYPE, yytext()); }
 .                      { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }

@@ -11,13 +11,13 @@ import java.util.HashMap;
 public class TDS
 {
     private static TDS instance  = new TDS();
-    private HashMap<Entree, Symbole> tableau;
+    private HashMap<Entree, Symbole> table;
     private int cptDeplacement;
 
     private TDS()
     {
         cptDeplacement = 0;
-        tableau = new HashMap<Entree, Symbole>();
+        table = new HashMap<Entree, Symbole>();
     }
 
     public static TDS getInstance()
@@ -30,14 +30,13 @@ public class TDS
      * @param e
      * @param s
      */
-    public void ajouter(Entree e, Symbole s)
+    public void ajouter(Entree e, Symbole s) // throws AnalyseSyntaxiqueException
     {
-        if(tableau.containsKey(e))
+        if(table.containsKey(e))
         {
             throw new AnalyseSyntaxiqueException("Une variable ne peut pas être déclarée deux fois.");
         }
-        tableau.put(e,s);
-        System.out.println(tableau);
+        table.put(e,s);
     }
 
     /**
@@ -47,7 +46,7 @@ public class TDS
      */
     public Symbole identifier(Entree e)
     {
-        return tableau.get(e);
+        return table.get(e);
     }
 
     public int getTailleZoneVariable()
