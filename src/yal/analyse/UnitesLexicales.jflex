@@ -50,7 +50,7 @@ commentaire = [/][/].*
 "booleen"               { return symbol(CodesLexicaux.TYPE, yytext()); }
 "reel"                  { return symbol(CodesLexicaux.TYPE, yytext()); }
 
-
+"="                    { return symbol(CodesLexicaux.EGAL); }
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }
