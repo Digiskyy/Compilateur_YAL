@@ -20,4 +20,16 @@ public class Symbole
     public int getTaille() {
         return taille;
     }
+
+    public boolean estEntier(){
+        return type.equals("entier");
+    }
+
+    public boolean estReel(){
+        return type.equals("reel");
+    }
+
+    public boolean estBooleen(){
+        return type.equals("booleen");
+    }
 }

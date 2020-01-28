@@ -13,6 +13,7 @@ public class TDS
     private static TDS instance  = new TDS();
     private HashMap<Entree, Symbole> table;
     private int cpt = 0;
+    private int tailleType = 4;
 
     private TDS()
     {
@@ -36,6 +37,14 @@ public class TDS
             throw new AnalyseSyntaxiqueException("Une variable ne peut pas être déclarée deux fois.");
         }
         table.put(e,s);
+        /*
+        if(s.estEntier() || s.estBooleen()){
+            tailleType = 4;
+        }else if (s.estReel()){
+            tailleType = 8;
+        }
+
+         */
         cpt++;
     }
 
@@ -50,7 +59,7 @@ public class TDS
     }
 
     public int tailleVariable(){
-        return table.size()*-4;
+        return table.size()*-tailleType;
     }
 
     public int getTailleZoneVariable()

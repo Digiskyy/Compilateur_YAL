@@ -6,4 +6,5 @@ debut
     x = 20;
     var = 10;
     test = 5;
+    lire test;
 fin

@@ -45,10 +45,12 @@ commentaire = [/][/].*
 "debut"                { return symbol(CodesLexicaux.DEBUT); }
 "fin"              	   { return symbol(CodesLexicaux.FIN); }
 
-"ecrire"               { return symbol(CodesLexicaux.ECRIRE); }
+"ecrire"                { return symbol(CodesLexicaux.ECRIRE); }
+"lire"                  { return symbol(CodesLexicaux.LIRE); }
 "entier"                { return symbol(CodesLexicaux.TYPE, yytext()); }
 "booleen"               { return symbol(CodesLexicaux.TYPE, yytext()); }
 "reel"                  { return symbol(CodesLexicaux.TYPE, yytext()); }
+
 
 "="                    { return symbol(CodesLexicaux.EGAL); }
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }

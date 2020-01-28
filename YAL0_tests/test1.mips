@@ -19,6 +19,11 @@ main :
 	li $v0, 5
 	sw $v0, -8($s7)
 
+#Lire test
+	li $v0, 5 #Code du lire
+	syscall
+	sw $v0,-8($s7)
+
 # Fin du programme
 end :
 	li $v0, 10

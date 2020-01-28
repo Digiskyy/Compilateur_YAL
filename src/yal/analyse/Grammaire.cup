@@ -56,7 +56,7 @@ parser code {:
 
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE;
 terminal String    IDF, CSTENTIERE, TYPE;
 
 /* Non terminals used in the grammar section.  */
@@ -93,6 +93,9 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
         |
                 AFF:a
                 {: RESULT = a ; :}
+        |
+                LIRE IDF:i POINTVIRGULE
+                {: RESULT = new Lire(i, ileft+1); :}
                 ;
 
 EXP    ::=      CSTENTIERE:c
