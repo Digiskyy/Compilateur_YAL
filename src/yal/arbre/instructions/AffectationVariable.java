@@ -3,10 +3,14 @@ package yal.arbre.instructions;
 import yal.analyse.Entree;
 import yal.analyse.Symbole;
 import yal.analyse.TDS;
+import yal.arbre.expressions.Expression;
 
 public class AffectationVariable extends Affectation {
-    protected AffectationVariable(int n) {
+    protected String partieD;
+    public AffectationVariable(String gauche, String droite, int n) {
         super(n);
+        partieG = gauche;
+        partieD = droite;
     }
 
     @Override

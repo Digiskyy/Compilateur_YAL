@@ -125,7 +125,10 @@ DECL_VAR   ::=  TYPE:t IDF:i POINTVIRGULE
                    TDS.getInstance().ajouter(e, s); :}
                 ;
 
-AFF        ::=  IDF:i EGAL EXP:e POINTVIRGULE
-                {: RESULT = new AffectationConstanteEntiere(i, e) ; :}
+AFF        ::=  IDF:i EGAL CSTENTIERE:c POINTVIRGULE
+                {: RESULT = new AffectationConstanteEntiere(i, new ConstanteEntiere(c, cleft + 1)) ; :}
+         |
+                IDF:i EGAL IDF:v POINTVIRGULE
+                {: RESULT = new AffectationVariable(i, v, vleft+1) ; :}
                 ;
 

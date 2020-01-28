@@ -7,7 +7,6 @@ import yal.arbre.expressions.Expression;
 
 public class Affectation extends Instruction {
     protected String partieG;
-    protected Expression partieD;
     protected int deplacement;
 
     protected Affectation(int n) {

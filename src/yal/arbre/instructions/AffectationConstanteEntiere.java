@@ -3,13 +3,15 @@ package yal.arbre.instructions;
 import yal.analyse.Entree;
 import yal.analyse.Symbole;
 import yal.analyse.TDS;
-import yal.arbre.expressions.Expression;
+import yal.arbre.expressions.ConstanteEntiere;
 
 public class AffectationConstanteEntiere extends Affectation {
-    public AffectationConstanteEntiere(String idf, Expression exp) {
-        super(exp.getNoLigne());
+    protected ConstanteEntiere partieD;
+
+    public AffectationConstanteEntiere(String idf, ConstanteEntiere cons) {
+        super(cons.getNoLigne());
         partieG = idf;
-        partieD = exp;
+        partieD = cons;
     }
 
     @Override
