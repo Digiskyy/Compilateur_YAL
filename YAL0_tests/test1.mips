@@ -24,6 +24,10 @@ main :
 	syscall
 	sw $v0,-8($s7)
 
+# Affectation test = var
+	li $v0, var
+	sw $v0, -8($s7)
+
 # Fin du programme
 end :
 	li $v0, 10

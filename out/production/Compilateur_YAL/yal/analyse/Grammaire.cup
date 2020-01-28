@@ -100,6 +100,9 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
 
 EXP    ::=      CSTENTIERE:c
                 {: RESULT = new ConstanteEntiere(c, cleft + 1) ; :}
+        |
+                IDF:i
+                {: RESULT = new Variable(i, ileft + 1) ; :}
                 ;
 
 LDECL   ::=     LDECL:ld DECL:d
@@ -123,6 +126,6 @@ DECL_VAR   ::=  TYPE:t IDF:i POINTVIRGULE
                 ;
 
 AFF        ::=  IDF:i EGAL EXP:e POINTVIRGULE
-                {: RESULT = new Affectation(i, e) ; :}
+                {: RESULT = new AffectationConstanteEntiere(i, e) ; :}
                 ;
 

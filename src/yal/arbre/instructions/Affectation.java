@@ -6,32 +6,22 @@ import yal.analyse.TDS;
 import yal.arbre.expressions.Expression;
 
 public class Affectation extends Instruction {
-    private String partieG;
-    private Expression partieD;
-    private int deplacement;
+    protected String partieG;
+    protected Expression partieD;
+    protected int deplacement;
 
-    public Affectation(String idf, Expression exp) {
-        super(exp.getNoLigne());
-        partieG = idf;
-        partieD = exp;
+    protected Affectation(int n) {
+        super(n);
     }
 
 
     @Override
     public void verifier() {
-        Entree e = new Entree(partieG);
-        Symbole s = TDS.getInstance().identifier(e);
 
-        deplacement = s.getTaille();
     }
 
     @Override
     public String toMIPS() {
-        verifier();
-        StringBuilder str = new StringBuilder();
-        str.append("# Affectation " + partieG + " = " + partieD + "\n");
-        str.append("\tli $v0, "+partieD+"\n");
-        str.append("\tsw $v0, "+deplacement+"($s7)\n\n");
-        return str.toString();
+        return null;
     }
 }
