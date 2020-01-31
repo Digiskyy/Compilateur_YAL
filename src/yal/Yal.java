@@ -17,12 +17,13 @@ public class Yal {
             ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value;
 
             arbre.verifier() ;
-            System.out.println("COMPILATION OK") ;
 
             String nomSortie = nomFichier.replaceAll("[.]yal", ".mips") ;
             PrintWriter flot = new PrintWriter(new BufferedWriter(new FileWriter(nomSortie))) ;
             flot.println(arbre.toMIPS());
             flot.close() ;
+
+            System.out.println("COMPILATION OK") ;
         }
         catch (FileNotFoundException ex) {
             System.err.println("Fichier " + nomFichier + " inexistant") ;

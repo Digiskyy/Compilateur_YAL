@@ -1,11 +1,4 @@
 programme test1
 debut
-    entier var;
-    entier x;
-    entier test;
-    x = 20;
-    var = 10;
-    test = 5;
-    lire test;
-    test = var;
+    ecrire a;
 fin

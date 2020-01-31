@@ -4,30 +4,11 @@ main :
 #Initialiser $s7 (registre 7) avec $sp
 	move $s7, $sp
 
-# Réserver la place pour 3 variables dans $s7
-	add $sp, $sp,-12
+# Réserver la place pour 0 variables dans $s7
+	add $sp, $sp,0
 
-# Affectation x = 20
-	li $v0, 20
-	sw $v0, -4($s7)
-
-# Affectation var = 10
-	li $v0, 10
-	sw $v0, 0($s7)
-
-# Affectation test = 5
-	li $v0, 5
-	sw $v0, -8($s7)
-
-#Lire test
-	li $v0, 5 #Code du lire
-	syscall
-	sw $v0,-8($s7)
-
-# Affectation test = var
-	lw $v0, 0($s7)
-	sw $v0, -8($s7)
-
+COUCOU
+	syscall # Appel système pour l'écriture
 # Fin du programme
 end :
 	li $v0, 10

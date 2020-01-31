@@ -15,7 +15,7 @@ public class Variable extends Expression {
 
     @Override
     public String toMIPS() {
-        return "COUCOU";
+        return null;
     }
 
     @Override

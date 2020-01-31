@@ -20,7 +20,9 @@ public class Ecrire extends Instruction
 
     @Override
     public String toMIPS()
+
     {
+        verifier();
         return exp.toMIPS() + "\n\tsyscall # Appel système pour l'écriture\n"; // Appel système à la fin de l'écriture
     }
 
