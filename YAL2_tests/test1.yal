@@ -1,0 +1,7 @@
+programme yal0
+debut
+    entier a;
+    si a alors
+    a = 1;
+    finsi
+fin

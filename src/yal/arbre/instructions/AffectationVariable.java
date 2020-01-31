@@ -45,7 +45,6 @@ public class AffectationVariable extends Affectation {
     @Override
     public String toMIPS() {
         verifier();
-        System.out.println("FIN");
 
         int deplacementDroite = symboleDroit.getTaille();
         StringBuilder str = new StringBuilder();

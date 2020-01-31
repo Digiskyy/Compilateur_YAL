@@ -2,6 +2,7 @@ package yal.arbre;
 
 import yal.analyse.TDS;
 import yal.arbre.instructions.Instruction;
+import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java.util.ArrayList;
 
@@ -14,13 +15,13 @@ import java.util.ArrayList;
 public class BlocDInstructions extends ArbreAbstrait {
     
     protected ArrayList<ArbreAbstrait> programme ;
-    private boolean premiereInstruction = false;
+    static boolean premiereInstruction = false;
 
     public BlocDInstructions(int n) {
         super(n) ;
         programme = new ArrayList<>() ;
     }
-    
+
     public void ajouter(ArbreAbstrait a) {
         programme.add(a) ;
     }
@@ -33,6 +34,9 @@ public class BlocDInstructions extends ArbreAbstrait {
     @Override
     public void verifier()
     {
+        for(ArbreAbstrait arb : programme){
+            arb.verifier();
+        }
     }
     
     @Override
@@ -50,6 +54,7 @@ public class BlocDInstructions extends ArbreAbstrait {
                 strB.append("# Réserver la place pour "+ TDS.getInstance().getCpt()+" variables dans $s7\n" +
                         "\tadd $sp, $sp,"+ TDS.getInstance().getCpt()*-4+"\n\n");
                 premiereInstruction = true;
+                TDS.getInstance().setInstructions(true);
             }
             strB.append(arb.toMIPS());
         }

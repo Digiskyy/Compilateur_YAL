@@ -1,5 +1,6 @@
 package yal.analyse;
 
+import yal.arbre.BlocDInstructions;
 import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public class TDS
     private HashMap<Entree, Symbole> table;
     private int cpt = 0;
     private int tailleType = 4;
+    private boolean instructions = false;
 
     private TDS()
     {
@@ -36,6 +38,10 @@ public class TDS
         {
             throw new AnalyseSyntaxiqueException("Une variable ne peut pas être déclarée deux fois.");
         }
+        if(instructions){
+            throw new AnalyseSyntaxiqueException("Les déclarations sont avant les instructions");
+        }
+
         table.put(e,s);
         /*
         if(s.estEntier() || s.estBooleen()){
@@ -70,5 +76,9 @@ public class TDS
     public int getCpt()
     {
         return cpt;
+    }
+
+    public void setInstructions(boolean instructions) {
+        this.instructions = instructions;
     }
 }

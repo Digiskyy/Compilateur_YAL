@@ -1,4 +1,4 @@
-programme test1
+programme yal0
 debut
-    ecrire a;
+    ecrire 5;
 fin

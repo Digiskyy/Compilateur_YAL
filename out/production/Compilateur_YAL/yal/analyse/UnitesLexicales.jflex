@@ -51,6 +51,10 @@ commentaire = [/][/].*
 "booleen"               { return symbol(CodesLexicaux.TYPE, yytext()); }
 "reel"                  { return symbol(CodesLexicaux.TYPE, yytext()); }
 
+"si"                    { return symbol(CodesLexicaux.SI, yytext()); }
+"alors"                 { return symbol(CodesLexicaux.ALORS, yytext()); }
+"sinon"                 { return symbol(CodesLexicaux.SINON, yytext()); }
+"finsi"                 { return symbol(CodesLexicaux.FINSI, yytext()); }
 
 "="                    { return symbol(CodesLexicaux.EGAL); }
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }

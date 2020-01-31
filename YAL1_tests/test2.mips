@@ -7,8 +7,12 @@ main :
 # Réserver la place pour 1 variables dans $s7
 	add $sp, $sp,-4
 
-CONDITION
+# Affectation a = 5
+	li $v0, 5
+	sw $v0, 0($s7)
 
+null
+	syscall # Appel système pour l'écriture
 # Fin du programme
 end :
 	li $v0, 10
