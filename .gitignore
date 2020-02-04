@@ -2,6 +2,11 @@
 # Default ignored files
 */workspace.xml
 */build.xml
-*.idea
+*.idea/
 *Analyseur*
 *CodesLexicaux*
+*AnalyseurLexical.java
+*AnalyseurSyntaxique.java
+*CodesLexicaux.java
+.idea
+*META-INF/

@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="yal0">
-    <output-path>$PROJECT_DIR$/out/artifacts/yal0</output-path>
-    <root id="archive" name="yal0.jar" />
-  </artifact>
-</component>
