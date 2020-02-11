@@ -56,6 +56,15 @@ commentaire = [/][/].*
 "sinon"                 { return symbol(CodesLexicaux.SINON, yytext()); }
 "finsi"                 { return symbol(CodesLexicaux.FINSI, yytext()); }
 
+"+"                     { return symbol(CodesLexicaux.PLUS, yytext()); }
+"-"                     { return symbol(CodesLexicaux.MOINS, yytext()); }
+"*"                     { return symbol(CodesLexicaux.FOIS, yytext()); }
+"/"                     { return symbol(CodesLexicaux.DIVISE, yytext()); }
+">"                     { return symbol(CodesLexicaux.SUPERIEUR, yytext()); }
+"<"                     { return symbol(CodesLexicaux.INFERIEUR, yytext()); }
+"=="                    { return symbol(CodesLexicaux.EGALEGAL, yytext()); }
+"!="                    { return symbol(CodesLexicaux.DIFFERENT, yytext()); }
+
 "="                    { return symbol(CodesLexicaux.EGAL); }
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 

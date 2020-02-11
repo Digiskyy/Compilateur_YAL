@@ -22,8 +22,8 @@ public class Condition extends Instruction {
     /**
      * Gère les conditions doubles
      * @param e l'expression booléenne
-     * @param b les instructions à faire si e e est vrai
-     * @param c les instructions à faire si e e est faux
+     * @param b les instructions à faire si e est vrai
+     * @param c les instructions à faire si e est faux
      */
     public Condition(Expression e, BlocDInstructions b, BlocDInstructions c) {
         super(e.getNoLigne());
@@ -44,6 +44,8 @@ public class Condition extends Instruction {
     @Override
     public String toMIPS() {
         verifier();
-        return "CONDITION\n\n";
+        StringBuilder strB = new StringBuilder();
+        strB.append("CONDITION");
+        return strB.toString();
     }
 }
