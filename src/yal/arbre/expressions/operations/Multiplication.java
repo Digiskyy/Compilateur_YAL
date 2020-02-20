@@ -4,7 +4,7 @@ import yal.arbre.expressions.Expression;
 import yal.arbre.expressions.Operation;
 
 public class Multiplication extends Operation {
-    public Multiplication(Expression gauche, Expression droite, int n) {
-        super(gauche, droite, n);
+    public Multiplication(Expression gauche, Expression droite) {
+        super(gauche, droite);
     }
 }

@@ -1,14 +1,12 @@
 package yal.arbre.expressions;
 
-import yal.arbre.expressions.operations.Operande;
-
 public abstract class Operation extends Expression {
     protected Expression partieGauche;
     protected Expression partieDroite;
 
 
-    public Operation(Expression gauche, Expression droite, int n) {
-        super(n);
+    public Operation(Expression gauche, Expression droite) {
+        super(gauche.getNoLigne());
         partieGauche = gauche;
         partieDroite = droite;
     }
@@ -20,6 +18,7 @@ public abstract class Operation extends Expression {
 
     @Override
     public String toMIPS() {
-        return "Operation";
+        return "#Operation : ";
     }
+
 }

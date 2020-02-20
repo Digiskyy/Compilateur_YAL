@@ -4,7 +4,7 @@ import yal.arbre.expressions.Expression;
 import yal.arbre.expressions.Operation;
 
 public class Soustraction extends Operation {
-    public Soustraction(Expression gauche, Expression droite, int n) {
-        super(gauche, droite, n);
+    public Soustraction(Expression gauche, Expression droite) {
+        super(gauche, droite);
     }
 }

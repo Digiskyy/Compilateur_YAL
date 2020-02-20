@@ -6,13 +6,13 @@ public class ConstanteEntiere extends Constante {
         super(texte, n) ;
     }
 
+
+
     @Override
     public String toMIPS()
     {
         // Ecriture en assembleur MIPS d'une constante entière
-        return "# Ecriture d'une constante entière\n" +
-                "\tli $v0, 1\n" +
-                "\tli $a0, " + cste;
+        return "\tli $a0, "+cste+"\n";
     }
 
 }

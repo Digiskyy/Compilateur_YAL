@@ -4,10 +4,22 @@ main :
 #Initialiser $s7 (registre 7) avec $sp
 	move $s7, $sp
 
-# Réserver la place pour 1 variables dans $s7
-	add $sp, $sp,-4
+# Réserver la place pour 2 variables dans $s7
+	add $sp, $sp,-8
 
-CONDITION
+#Affectation  b = 19
+	li $a0, 19
+	sw $a0, -4($s7)
+
+#Affectation  a = 1 + 1
+#Operation : 1 + 1
+	add $v0, 1, 1
+	sw $a0, 0($s7)
+
+#Ecriture de a
+	li $v0, 1
+	lw $a0, 0($s7)
+	syscall
 
 # Fin du programme
 end :

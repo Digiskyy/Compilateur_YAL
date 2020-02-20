@@ -1,5 +1,8 @@
 programme yal0
 debut
     entier a;
-    1 + 1;
+    entier b;
+    b = 19;
+    a = 1+3;
+    ecrire a;
 fin

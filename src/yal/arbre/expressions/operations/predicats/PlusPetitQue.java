@@ -5,7 +5,7 @@ import yal.arbre.expressions.Operation;
 import yal.arbre.expressions.operations.Operande;
 
 public class PlusPetitQue extends Operation {
-    public PlusPetitQue(Expression gauche, Expression droite, int n) {
-        super(gauche, droite, n);
+    public PlusPetitQue(Expression gauche, Expression droite) {
+        super(gauche, droite);
     }
 }

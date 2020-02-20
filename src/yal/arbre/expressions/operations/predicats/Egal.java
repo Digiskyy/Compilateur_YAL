@@ -5,7 +5,7 @@ import yal.arbre.expressions.Operation;
 import yal.arbre.expressions.operations.Operande;
 
 public class Egal extends Operation {
-    public Egal(Expression gauche, Expression droite, int n) {
-        super(gauche, droite, n);
+    public Egal(Expression gauche, Expression droite) {
+        super(gauche, droite);
     }
 }
