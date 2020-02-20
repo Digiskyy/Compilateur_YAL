@@ -29,8 +29,7 @@ public class Variable extends Expression {
     public String toMIPS() {
         verifier();
 
-        int deplacementDroite = symboleDroit.getTaille();
-        return "\tlw $a0, "+ deplacementDroite+"($s7)\n";
+        return "\tlw $a0, " + symboleDroit.getTaille() + "($s7)\n";
     }
 
     @Override

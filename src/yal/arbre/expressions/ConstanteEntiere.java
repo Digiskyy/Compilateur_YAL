@@ -7,12 +7,14 @@ public class ConstanteEntiere extends Constante {
     }
 
 
-
+    /**
+     * Ecriture en assembleur MIPS d'une constante entière
+     * @return
+     */
     @Override
     public String toMIPS()
     {
-        // Ecriture en assembleur MIPS d'une constante entière
-        return "\tli $a0, "+cste+"\n";
+        return "\tli $a0, " + cste + "\n";
     }
 
 }

@@ -2,7 +2,11 @@ programme yal0
 debut
     entier a;
     entier b;
+    entier c;
+    a = 3;
     b = 19;
-    a = 1+3;
+    a = a + b;
     ecrire a;
+    c = 1 + 2 + 3 + a;
+    ecrire c;
 fin
