@@ -18,7 +18,7 @@ public abstract class Operation extends Expression {
 
     @Override
     public String toMIPS() {
-        return "#Operation : ";
+        return "\t# Operation : ";
     }
 
 }

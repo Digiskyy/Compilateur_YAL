@@ -4,10 +4,13 @@ main :
 #Initialiser $s7 (registre 7) avec $sp
 	move $s7, $sp
 
-# Réserver la place pour 1 variables dans $s7
-	add $sp, $sp,-4
+# Réserver la place pour 0 variables dans $s7
+	add $sp, $sp,0
 
-CONDITION
+#Ecriture de 5
+	li $v0, 1
+	li $a0, 5
+	syscall
 
 # Fin du programme
 end :
