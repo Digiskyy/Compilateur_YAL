@@ -16,6 +16,7 @@ public class BlocDInstructions extends ArbreAbstrait {
     
     protected ArrayList<ArbreAbstrait> programme ;
     static boolean premiereInstruction = false;
+    private boolean blocPrincipal = false;
 
     public BlocDInstructions(int n) {
         super(n) ;
@@ -42,26 +43,31 @@ public class BlocDInstructions extends ArbreAbstrait {
     @Override
     public String toMIPS()
     {
-        StringBuilder strB = new StringBuilder("# Début d'un programme\n" +
-                                                ".text\n" +
-                                                "main :\n"+
-                                                "#Initialiser $s7 (registre 7) avec $sp\n" +
-                                                "\tmove $s7, $sp\n\n");
+        StringBuilder strB = new StringBuilder();
 
         for(ArbreAbstrait arb : programme)
         {
             if(arb instanceof Instruction && !premiereInstruction){
+                strB.append("# Début d'un programme\n" +
+                        ".text\n" +
+                        "main :\n"+
+                        "#Initialiser $s7 (registre 7) avec $sp\n" +
+                        "\tmove $s7, $sp\n\n");
                 strB.append("# Réserver la place pour "+ TDS.getInstance().getCpt()+" variables dans $s7\n" +
                         "\tadd $sp, $sp,"+ TDS.getInstance().getCpt()*-4+"\n\n");
                 premiereInstruction = true;
                 TDS.getInstance().setInstructions(true);
+                blocPrincipal = true;
             }
             strB.append(arb.toMIPS());
         }
-        strB.append("# Fin du programme\n" +
+        //On vérifie qu'il s'agit du bloc principal
+        if(blocPrincipal) {
+            strB.append("# Fin du programme\n" +
                     "end :\n" +
                     "\tli $v0, 10\n" +
                     "\tsyscall");
+        }
         
         return strB.toString();
     }

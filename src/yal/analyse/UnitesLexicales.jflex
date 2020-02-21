@@ -56,6 +56,10 @@ commentaire = [/][/].*
 "sinon"                 { return symbol(CodesLexicaux.SINON, yytext()); }
 "finsi"                 { return symbol(CodesLexicaux.FINSI, yytext()); }
 
+"tantque"               { return symbol(CodesLexicaux.TANTQUE, yytext()); }
+"repeter"               { return symbol(CodesLexicaux.REPETER, yytext()); }
+"fintantque"            { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
+
 "+"                     { return symbol(CodesLexicaux.PLUS, yytext()); }
 "-"                     { return symbol(CodesLexicaux.MOINS, yytext()); }
 "*"                     { return symbol(CodesLexicaux.FOIS, yytext()); }

@@ -8,4 +8,10 @@ public class Egal extends Operation {
     public Egal(Expression gauche, Expression droite) {
         super(gauche, droite);
     }
+
+    @Override
+    public String toMIPS() {
+        return  partieGauche.getComparaison1() + partieDroite.getComparaison2()+
+                "\tbne $t1, $t2, Else\n";
+    }
 }

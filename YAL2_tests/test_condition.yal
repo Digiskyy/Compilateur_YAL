@@ -1,0 +1,10 @@
+programme condition
+debut
+entier a;
+a = 0;
+si a == 0 alors
+ecrire a;
+sinon
+ecrire 20;
+finsi
+fin

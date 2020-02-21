@@ -17,4 +17,14 @@ public class ConstanteEntiere extends Constante {
         return "\tli $a0, " + cste + "\n";
     }
 
+    @Override
+    public String getComparaison1() {
+        return "\tli $t1, "+ cste+"\n";
+    }
+
+    @Override
+    public String getComparaison2() {
+        return "\tli $t2, "+ cste+"\n";
+    }
+
 }

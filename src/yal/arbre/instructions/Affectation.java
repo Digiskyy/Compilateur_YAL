@@ -46,7 +46,7 @@ public class Affectation extends Instruction {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("# Affectation  " + partieG + " = " + partieD + "\n");
         stringBuilder.append(partieD.toMIPS());
-        stringBuilder.append("\tsw $a0, " + deplacement + "($s7) # Affectation\n\n");
+        stringBuilder.append("\tsw $a0, " + deplacement + "($s7)\n\n");
         return stringBuilder.toString();
     }
 }
