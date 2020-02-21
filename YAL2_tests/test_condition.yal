@@ -2,7 +2,7 @@ programme condition
 debut
 entier a;
 a = 0;
-si a == 0 alors
+si a < 10 alors
 ecrire a;
 sinon
 ecrire 20;

@@ -13,8 +13,10 @@ main :
 
 #CONDITION
 	lw $t1, 0($s7)
-	li $t2, 0
-	bne $t1, $t2, Else
+	li $t2, 10
+	slt $t3, $t1, $t2
+	 li $t4, 0
+	beq $t3, $t4, Else
 # Ecriture de a
 	li $v0, 1
 	lw $a0, 0($s7)
