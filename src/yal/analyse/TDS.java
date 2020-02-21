@@ -1,6 +1,5 @@
 package yal.analyse;
 
-import yal.arbre.BlocDInstructions;
 import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java.util.HashMap;
@@ -29,10 +28,10 @@ public class TDS
 
     /**
      * Appel dans verifier() de l'analyseur syntaxique
-     * @param e
-     * @param s
+     * @param e entrée : nom du symbole (nom de variable, de fonction)
+     * @param s symbole : type de la variable associé au nom e
      */
-    public void ajouter(Entree e, Symbole s) // throws AnalyseSyntaxiqueException
+    public void ajouter(Entree e, Symbole s) // throws AnalyseSyntaxiqueException => pas obligé car ExceptionRunTime
     {
         if(table.containsKey(e))
         {
@@ -43,15 +42,15 @@ public class TDS
         }
 
         table.put(e,s);
+        cpt++;
+
         /*
         if(s.estEntier() || s.estBooleen()){
             tailleType = 4;
         }else if (s.estReel()){
             tailleType = 8;
         }
-
          */
-        cpt++;
     }
 
     /**

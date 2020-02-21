@@ -23,7 +23,10 @@ public class Ecrire extends Instruction
 
     {
         verifier();
-        return "#Ecriture de "+exp+"\n\tli $v0, 1\n"+ exp.toMIPS() + "\tsyscall\n\n"; // Appel système à la fin de l'écriture
+        return "# Ecriture de "+exp+"\n" +
+                "\tli $v0, 1\n" +
+                exp.toMIPS() +
+                "\tsyscall\n\n"; // Appel système à la fin de l'écriture
     }
 
 }

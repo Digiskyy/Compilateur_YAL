@@ -3,6 +3,7 @@ debut
     entier a;
     entier b;
     b = 19;
-    a = 1+3;
+    a = 1+3+6;
+    a = a + b;
     ecrire a;
 fin

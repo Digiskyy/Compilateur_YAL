@@ -8,13 +8,33 @@ public class Addition extends Operation {
         super(gauche, droite);
     }
 
+    /**
+     * Modèle de traduction de l'addition si l'opérande droit de l'addition est constant
+     * @return la chaîne de caractère en MIPS correspondante à l'addition
+     */
     @Override
     public String toMIPS() {
         StringBuilder str = new StringBuilder();
         str.append(super.toMIPS()+toString()+"\n");
-        str.append("\tli $t0, " + partieGauche.toString() + "\n");
-        str.append("\tli $t1, " + partieDroite.toString() + "\n");
-        str.append("\tadd $a0, $t0, $t1\n");
+
+        // Evaluation de l'opérande gauche et mise de sa valeur dans $a0
+        str.append(partieGauche.toMIPS() + "\n");
+
+        // Empilement $a0
+        str.append("\t# Empilement de $a0\n");
+        str.append("\tsw $a0, 0($sp)\n");
+        str.append("\tadd $sp, $sp, -4\n");
+
+        // Evaluation de l'opérande droit et mise de sa valeur dans $a0
+        str.append(partieDroite.toMIPS() + "\n");
+
+        // Dépilement de $a0 et mise de la valeur dans $t8
+        str.append("\t# Dépilement de $a0\n");
+        str.append("\tadd $sp, $sp, 4\n");
+        str.append("\tlw $t8, ($sp)\n");
+
+        // Addition et mise dans $a0
+        str.append("\tadd $a0, $t8, $a0\n");
 
         return str.toString();
     }
