@@ -11,7 +11,7 @@ public class Soustraction extends Operation
     }
 
     /**
-     * Modèle de traduction de la soustraction si l'opérande droit est constant
+     * Modèle de traduction de la soustraction en assembleur MIPS
      * @return la chaîne de caractère en MIPS correspondante à la soustraction
      */
     @Override
@@ -36,7 +36,7 @@ public class Soustraction extends Operation
         str.append("\tadd $sp, $sp, 4\n");
         str.append("\tlw $t8, ($sp)\n");
 
-        // Addition et mise dans $a0
+        // Soustraction et mise dans $a0
         str.append("\tsub $a0, $t8, $a0 # Soustraction\n");
 
         return str.toString();

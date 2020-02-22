@@ -1,0 +1,13 @@
+programme yal2
+debut
+    entier a;
+    entier b;
+    entier c;
+    b = 12;
+    a = 2 * 5;
+    a = a * b;
+    c = 1000000000 * a;
+    ecrire a;
+    ecrire c;
+    ecrire 3 * 4;
+fin

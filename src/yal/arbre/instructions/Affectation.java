@@ -36,7 +36,7 @@ public class Affectation extends Instruction {
     }
 
     /**
-     * Traduction de l'affectation en langage Assmebleur MIPS
+     * Traduction de l'affectation en langage Assembleur MIPS
      * @return la chaîne de caractère correspondante
      */
     @Override

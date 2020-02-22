@@ -11,7 +11,7 @@ public class Addition extends Operation
     }
 
     /**
-     * Modèle de traduction de l'addition si l'opérande droit de l'addition est constant
+     * Modèle de traduction de l'addition en assembleur MIPS
      * @return la chaîne de caractère en MIPS correspondante à l'addition
      */
     @Override
