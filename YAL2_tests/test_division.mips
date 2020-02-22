@@ -1,0 +1,88 @@
+# Début d'un programme
+.text
+main :
+#Initialiser $s7 (registre 7) avec $sp
+	move $s7, $sp
+
+# Réserver la place pour 3 variables dans $s7
+	add $sp, $sp,-12
+
+# Affectation  b = 4
+	li $a0, 4
+	sw $a0, -4($s7) # Affectation
+
+# Affectation  a = 15 / b (Division entière)
+	# Operation : 15 / b (Division entière)
+	li $a0, 15
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	lw $a0, -4($s7)
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	div $t8, $a0 # Division entière
+	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+	sw $a0, 0($s7) # Affectation
+
+# Affectation  c = 15 / a (Division entière)
+	# Operation : 15 / a (Division entière)
+	li $a0, 15
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	lw $a0, 0($s7)
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	div $t8, $a0 # Division entière
+	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+	sw $a0, -8($s7) # Affectation
+
+# Ecriture de a
+	li $v0, 1
+	lw $a0, 0($s7)
+	syscall
+
+# Ecriture de c
+	li $v0, 1
+	lw $a0, -8($s7)
+	syscall
+
+# Ecriture de 10 / 2 (Division entière) / 2 (Division entière)
+	li $v0, 1
+	# Operation : 10 / 2 (Division entière) / 2 (Division entière)
+	# Operation : 10 / 2 (Division entière)
+	li $a0, 10
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	div $t8, $a0 # Division entière
+	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	div $t8, $a0 # Division entière
+	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+	syscall
+
+# Fin du programme
+end :
+	li $v0, 10
+	syscall
