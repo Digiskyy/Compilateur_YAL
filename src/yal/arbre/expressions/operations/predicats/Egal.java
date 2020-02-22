@@ -12,6 +12,6 @@ public class Egal extends Operation {
     @Override
     public String toMIPS() {
         return  partieGauche.getComparaison1() + partieDroite.getComparaison2()+
-                "\tbne $t1, $t2, Else\n";
+                "\tbne $t1, $t2, ";
     }
 }

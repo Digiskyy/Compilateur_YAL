@@ -14,58 +14,58 @@ main :
 # Condition
 	lw $t1, 0($s7)
 	li $t2, 10
-	bne $t1, $t2, Else
+	bne $t1, $t2, Else0
 # Ecriture de a
 	li $v0, 1
 	lw $a0, 0($s7)
 	syscall
 
-	j endif
-Else:
+	j endif0
+Else0:
 # Ecriture de 20
 	li $v0, 1
 	li $a0, 20
 	syscall
 
-endif:
+endif0:
 # Condition
 	lw $t1, 0($s7)
 	li $t2, 10
 	slt $t3, $t1, $t2
 	 li $t4, 0
-	beq $t3, $t4, Else
+	beq $t3, $t4, Else1
 # Ecriture de a
 	li $v0, 1
 	lw $a0, 0($s7)
 	syscall
 
-	j endif
-Else:
+	j endif1
+Else1:
 # Ecriture de 30
 	li $v0, 1
 	li $a0, 30
 	syscall
 
-endif:
+endif1:
 # Condition
 	lw $t1, 0($s7)
 	li $t2, 10
 	sgt $t3, $t1, $t2
-	 li $t4, 0
-	beq $t3, $t4, Else
+	li $t4, 0
+	beq $t3, $t4, Else2
 # Ecriture de a
 	li $v0, 1
 	lw $a0, 0($s7)
 	syscall
 
-	j endif
-Else:
+	j endif2
+Else2:
 # Ecriture de 40
 	li $v0, 1
 	li $a0, 40
 	syscall
 
-endif:
+endif2:
 # Fin du programme
 end :
 	li $v0, 10

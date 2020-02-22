@@ -8,4 +8,10 @@ public class Different extends Operation {
     public Different(Expression gauche, Expression droite) {
         super(gauche, droite);
     }
+
+    @Override
+    public String toMIPS() {
+        return  partieGauche.getComparaison1() + partieDroite.getComparaison2()+
+                "\tbeq $t1, $t2, ";
+    }
 }

@@ -14,6 +14,6 @@ public class PlusPetitQue extends Operation {
         return partieGauche.getComparaison1() + partieDroite.getComparaison2()+
                  "\tslt $t3, $t1, $t2\n"
                 +"\t li $t4, 0\n"
-                +"\tbeq $t3, $t4, Else\n";
+                +"\tbeq $t3, $t4, ";
     }
 }

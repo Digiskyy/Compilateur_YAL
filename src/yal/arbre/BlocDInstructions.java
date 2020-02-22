@@ -2,7 +2,6 @@ package yal.arbre;
 
 import yal.analyse.TDS;
 import yal.arbre.instructions.Instruction;
-import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java.util.ArrayList;
 

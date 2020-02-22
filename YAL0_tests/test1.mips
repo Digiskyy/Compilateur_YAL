@@ -7,7 +7,7 @@ main :
 # Réserver la place pour 0 variables dans $s7
 	add $sp, $sp,0
 
-#Ecriture de 5
+# Ecriture de 5
 	li $v0, 1
 	li $a0, 5
 	syscall

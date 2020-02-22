@@ -145,7 +145,7 @@ EXP    ::=      CSTENTIERE:c
                 {: RESULT = new Egal(gauche, droite) ; :}
         |
                 EXP:gauche DIFFERENT EXP:droite
-                {: RESULT = new Soustraction(gauche, droite) ; :}
+                {: RESULT = new Different(gauche, droite) ; :}
                 ;
 
 LDECL   ::=     LDECL:ld DECL:d

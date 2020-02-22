@@ -7,6 +7,8 @@ public class Condition extends Instruction {
     private Expression exp;
     private BlocDInstructions bloc;
     private BlocDInstructions sinon;
+    private static int cpt = -1;
+    private int compteurActuel;
 
     /**
      * Gère les conditions simples
@@ -17,6 +19,8 @@ public class Condition extends Instruction {
         super(e.getNoLigne());
         exp = e;
         bloc = b;
+        cpt++;
+        compteurActuel = cpt;
     }
 
     /**
@@ -30,6 +34,8 @@ public class Condition extends Instruction {
         exp = e;
         bloc = b;
         sinon = c;
+        cpt++;
+        compteurActuel = cpt;
     }
 
     @Override
@@ -46,14 +52,14 @@ public class Condition extends Instruction {
         verifier();
         StringBuilder strB = new StringBuilder();
         strB.append("# Condition\n");
-        strB.append(exp.toMIPS());
+        strB.append(exp.toMIPS()+"Else"+compteurActuel+"\n");
         strB.append(bloc.toMIPS());
-        strB.append("\tj endif\n");
-        strB.append("Else:\n");
+        strB.append("\tj endif"+compteurActuel+"\n");
+        strB.append("Else"+compteurActuel+":\n");
         if(sinon != null) {
             strB.append(sinon.toMIPS());
         }
-        strB.append("endif:\n");
+        strB.append("endif"+compteurActuel+":\n");
         return strB.toString();
     }
 }
