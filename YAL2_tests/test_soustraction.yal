@@ -1,0 +1,13 @@
+programme yal2
+debut
+    entier a;
+    entier b;
+    entier c;
+    b = 28;
+    a = 10 - 5;
+    a = b - a;
+    c = a - 2;
+    ecrire a;
+    ecrire c - 30;
+    ecrire 8 - 10;
+fin

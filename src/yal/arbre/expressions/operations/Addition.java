@@ -3,8 +3,10 @@ package yal.arbre.expressions.operations;
 import yal.arbre.expressions.Expression;
 import yal.arbre.expressions.Operation;
 
-public class Addition extends Operation {
-    public Addition(Expression gauche, Expression droite) {
+public class Addition extends Operation
+{
+    public Addition(Expression gauche, Expression droite)
+    {
         super(gauche, droite);
     }
 
@@ -13,7 +15,8 @@ public class Addition extends Operation {
      * @return la chaîne de caractère en MIPS correspondante à l'addition
      */
     @Override
-    public String toMIPS() {
+    public String toMIPS()
+    {
         StringBuilder str = new StringBuilder();
         str.append(super.toMIPS()+toString()+"\n");
 
@@ -34,13 +37,14 @@ public class Addition extends Operation {
         str.append("\tlw $t8, ($sp)\n");
 
         // Addition et mise dans $a0
-        str.append("\tadd $a0, $t8, $a0\n");
+        str.append("\tadd $a0, $t8, $a0 # Addition\n");
 
         return str.toString();
     }
 
     @Override
-    public String toString() {
-        return partieGauche+ " + " + partieDroite;
+    public String toString()
+    {
+        return partieGauche + " + " + partieDroite;
     }
 }
