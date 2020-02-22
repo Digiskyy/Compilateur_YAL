@@ -28,12 +28,23 @@ public class Variable extends Expression {
     @Override
     public String toMIPS() {
         verifier();
-
         return "\tlw $a0, " + symboleDroit.getTaille() + "($s7)\n";
     }
 
     @Override
     public String toString() {
         return idf;
+    }
+
+    @Override
+    public String getComparaison1() {
+        verifier();
+        return "\tlw $t1, "+ symboleDroit.getTaille() + "($s7)\n";
+    }
+
+    @Override
+    public String getComparaison2() {
+        verifier();
+        return "\tlw $t2, "+ symboleDroit.getTaille() + "($s7)\n";
     }
 }

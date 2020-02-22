@@ -1,0 +1,36 @@
+# Début d'un programme
+.text
+main :
+#Initialiser $s7 (registre 7) avec $sp
+	move $s7, $sp
+
+# Réserver la place pour 1 variables dans $s7
+	add $sp, $sp,-4
+
+# Affectation  a = 0
+	li $a0, 0
+	sw $a0, 0($s7)
+
+#CONDITION
+	lw $t1, 0($s7)
+	li $t2, 10
+	slt $t3, $t1, $t2
+	 li $t4, 0
+	beq $t3, $t4, Else
+# Ecriture de a
+	li $v0, 1
+	lw $a0, 0($s7)
+	syscall
+
+	j endif
+Else:
+# Ecriture de 20
+	li $v0, 1
+	li $a0, 20
+	syscall
+
+endif:
+# Fin du programme
+end :
+	li $v0, 10
+	syscall

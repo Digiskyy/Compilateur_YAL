@@ -8,4 +8,12 @@ public class PlusPetitQue extends Operation {
     public PlusPetitQue(Expression gauche, Expression droite) {
         super(gauche, droite);
     }
+
+    @Override
+    public String toMIPS() {
+        return partieGauche.getComparaison1() + partieDroite.getComparaison2()+
+                 "\tslt $t3, $t1, $t2\n"
+                +"\t li $t4, 0\n"
+                +"\tbeq $t3, $t4, Else\n";
+    }
 }

@@ -7,13 +7,35 @@ main :
 # Réserver la place pour 3 variables dans $s7
 	add $sp, $sp,-12
 
-# Affectation  a = 3
-	li $a0, 3
-	sw $a0, 0($s7) # Affectation
-
 # Affectation  b = 19
 	li $a0, 19
-	sw $a0, -4($s7) # Affectation
+	sw $a0, -4($s7)
+
+# Affectation  a = 1 + 3 + 6
+	# Operation : 1 + 3 + 6
+	# Operation : 1 + 3
+	li $a0, 1
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 3
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	add $a0, $t8, $a0
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 6
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	add $a0, $t8, $a0
+	sw $a0, 0($s7)
 
 # Affectation  a = a + b
 	# Operation : a + b
@@ -28,28 +50,37 @@ main :
 	add $sp, $sp, 4
 	lw $t8, ($sp)
 	add $a0, $t8, $a0
-	sw $a0, 0($s7) # Affectation
+	sw $a0, 0($s7)
+
+# Affectation  c = 2 + 5
+	# Operation : 2 + 5
+	li $a0, 2
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	add $a0, $t8, $a0
+	sw $a0, -8($s7)
 
 # Ecriture de a
 	li $v0, 1
 	lw $a0, 0($s7)
 	syscall
 
-# Affectation  c = 1 + 2 + 3 + a
-	# Operation : 1 + 2 + 3 + a
-	# Operation : 1 + 2 + 3
-	# Operation : 1 + 2
-	li $a0, 1
+# Ecriture de c
+	li $v0, 1
+	lw $a0, -8($s7)
+	syscall
 
-	# Empilement de $a0
-	sw $a0, 0($sp)
-	add $sp, $sp, -4
-	li $a0, 2
-
-	# Dépilement de $a0
-	add $sp, $sp, 4
-	lw $t8, ($sp)
-	add $a0, $t8, $a0
+# Ecriture de 5 + 3
+	li $v0, 1
+	# Operation : 5 + 3
+	li $a0, 5
 
 	# Empilement de $a0
 	sw $a0, 0($sp)
@@ -60,21 +91,6 @@ main :
 	add $sp, $sp, 4
 	lw $t8, ($sp)
 	add $a0, $t8, $a0
-
-	# Empilement de $a0
-	sw $a0, 0($sp)
-	add $sp, $sp, -4
-	lw $a0, 0($s7)
-
-	# Dépilement de $a0
-	add $sp, $sp, 4
-	lw $t8, ($sp)
-	add $a0, $t8, $a0
-	sw $a0, -8($s7) # Affectation
-
-# Ecriture de c
-	li $v0, 1
-	lw $a0, -8($s7)
 	syscall
 
 # Fin du programme
