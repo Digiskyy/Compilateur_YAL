@@ -45,7 +45,7 @@ public class Condition extends Instruction {
     public String toMIPS() {
         verifier();
         StringBuilder strB = new StringBuilder();
-        strB.append("#CONDITION\n");
+        strB.append("# Condition\n");
         strB.append(exp.toMIPS());
         strB.append(bloc.toMIPS());
         strB.append("\tj endif\n");

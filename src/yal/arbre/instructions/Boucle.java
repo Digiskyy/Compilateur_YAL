@@ -20,6 +20,6 @@ public class Boucle extends Instruction {
 
     @Override
     public String toMIPS() {
-        return "BOUCLE\n\n";
+        return "Boucle\n\n";
     }
 }

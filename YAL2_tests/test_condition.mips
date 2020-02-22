@@ -9,9 +9,26 @@ main :
 
 # Affectation  a = 0
 	li $a0, 0
-	sw $a0, 0($s7)
+	sw $a0, 0($s7) # Affectation
 
-#CONDITION
+# Condition
+	lw $t1, 0($s7)
+	li $t2, 10
+	bne $t1, $t2, Else
+# Ecriture de a
+	li $v0, 1
+	lw $a0, 0($s7)
+	syscall
+
+	j endif
+Else:
+# Ecriture de 20
+	li $v0, 1
+	li $a0, 20
+	syscall
+
+endif:
+# Condition
 	lw $t1, 0($s7)
 	li $t2, 10
 	slt $t3, $t1, $t2
@@ -24,9 +41,28 @@ main :
 
 	j endif
 Else:
-# Ecriture de 20
+# Ecriture de 30
 	li $v0, 1
-	li $a0, 20
+	li $a0, 30
+	syscall
+
+endif:
+# Condition
+	lw $t1, 0($s7)
+	li $t2, 10
+	sgt $t3, $t1, $t2
+	 li $t4, 0
+	beq $t3, $t4, Else
+# Ecriture de a
+	li $v0, 1
+	lw $a0, 0($s7)
+	syscall
+
+	j endif
+Else:
+# Ecriture de 40
+	li $v0, 1
+	li $a0, 40
 	syscall
 
 endif:

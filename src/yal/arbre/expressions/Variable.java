@@ -16,7 +16,7 @@ public class Variable extends Expression {
 
     @Override
     public void verifier() {
-        Entree entreeDroite = new Entree(idf.toString());
+        Entree entreeDroite = new Entree(idf);
         symboleDroit = TDS.getInstance().identifier(entreeDroite);
         //On vérifie que la variable qui donne sa valeur est déclarée
         if (symboleDroit == null) {

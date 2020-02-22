@@ -9,7 +9,7 @@ main :
 
 # Affectation  b = 19
 	li $a0, 19
-	sw $a0, -4($s7)
+	sw $a0, -4($s7) # Affectation
 
 # Affectation  a = 1 + 3 + 6
 	# Operation : 1 + 3 + 6
@@ -35,7 +35,7 @@ main :
 	add $sp, $sp, 4
 	lw $t8, ($sp)
 	add $a0, $t8, $a0
-	sw $a0, 0($s7)
+	sw $a0, 0($s7) # Affectation
 
 # Affectation  a = a + b
 	# Operation : a + b
@@ -50,7 +50,7 @@ main :
 	add $sp, $sp, 4
 	lw $t8, ($sp)
 	add $a0, $t8, $a0
-	sw $a0, 0($s7)
+	sw $a0, 0($s7) # Affectation
 
 # Affectation  c = 2 + 5
 	# Operation : 2 + 5
@@ -65,7 +65,7 @@ main :
 	add $sp, $sp, 4
 	lw $t8, ($sp)
 	add $a0, $t8, $a0
-	sw $a0, -8($s7)
+	sw $a0, -8($s7) # Affectation
 
 # Ecriture de a
 	li $v0, 1
