@@ -14,4 +14,9 @@ public class Different extends Operation {
         return  partieGauche.getComparaison1() + partieDroite.getComparaison2()+
                 "\tbeq $t1, $t2, ";
     }
+
+    @Override
+    public String toString() {
+        return partieGauche+" différent de "+partieDroite;
+    }
 }

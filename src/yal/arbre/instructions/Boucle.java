@@ -25,7 +25,7 @@ public class Boucle extends Instruction {
     @Override
     public String toMIPS() {
         StringBuilder strB = new StringBuilder();
-        strB.append("#Boucle\n");
+        strB.append("#Tant que "+exp.toString()+"\n");
         strB.append("loop"+compteur+":\n");
         strB.append(exp.toMIPS()+"fintantque"+compteur+"\n");
         strB.append(tantQue.toMIPS());

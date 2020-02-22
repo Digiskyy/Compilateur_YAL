@@ -11,7 +11,7 @@ main :
 	li $a0, 0
 	sw $a0, 0($s7) # Affectation
 
-#Boucle
+#Tant que a différent de 5
 loop1:
 	lw $t1, 0($s7)
 	li $t2, 5

@@ -16,4 +16,9 @@ public class PlusGrandQue extends Operation {
                 +"\tli $t4, 0\n"
                 +"\tbeq $t3, $t4, ";
     }
+
+    @Override
+    public String toString() {
+        return partieGauche+" plus grand que "+partieDroite;
+    }
 }

@@ -14,4 +14,9 @@ public class Egal extends Operation {
         return  partieGauche.getComparaison1() + partieDroite.getComparaison2()+
                 "\tbne $t1, $t2, ";
     }
+
+    @Override
+    public String toString() {
+        return partieGauche+" égal à "+partieDroite;
+    }
 }
