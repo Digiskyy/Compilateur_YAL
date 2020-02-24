@@ -1,22 +1,12 @@
 programme condition
 debut
 entier a;
-a = 0;
-si a == 10 alors
+entier b;
+a = 5;
+b = 0;
+si b == 2 alors
+si a == 5 alors
 ecrire a;
-sinon
-ecrire 20;
 finsi
-
-si a < 10 alors
-ecrire a;
-sinon
-ecrire 30;
-finsi
-
-si a > 10 alors
-ecrire a;
-sinon
-ecrire 40;
 finsi
 fin

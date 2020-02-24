@@ -3,7 +3,8 @@ debut
 entier a;
 a = 0;
 tantque a != 5 repeter
-    a = a+1;
-    ecrire a;
+    tantque a != 0 repeter
+        ecrire a;
+    fintantque
 fintantque
 fin

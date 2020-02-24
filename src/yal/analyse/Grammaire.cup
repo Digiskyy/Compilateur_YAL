@@ -58,9 +58,9 @@ parser code {:
 
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE, PARENOUV, PARENFERM;
 terminal Symbol    PLUS, MOINS, FOIS, DIVISE, DIFFERENT, EGALEGAL, SUPERIEUR, INFERIEUR;
-terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE;
+terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE, ET, OU, NON;
 terminal String    IDF, CSTENTIERE, TYPE;
 
 /* Non terminals used in the grammar section.  */
@@ -77,6 +77,7 @@ precedence left EGALEGAL, DIFFERENT;
 precedence left INFERIEUR, SUPERIEUR;
 precedence left PLUS, MOINS;
 precedence left FOIS, DIVISE;
+precedence left ET, OU;
 
 
 /* ----------------------------Grammar Section-------------------- */
@@ -146,6 +147,21 @@ EXP    ::=      CSTENTIERE:c
         |
                 EXP:gauche DIFFERENT EXP:droite
                 {: RESULT = new Different(gauche, droite) ; :}
+        |
+                MOINS EXP:e
+                {: RESULT = new Inverse(e) ; :}
+        |
+                PARENOUV EXP:e PARENFERM
+                {: RESULT = e ; :}
+        |
+                EXP:gauche OU EXP:droite
+                {: RESULT = new Ou(gauche, droite) ; :}
+        |
+                EXP:gauche ET EXP:droite
+                {: RESULT = new Et(gauche, droite) ; :}
+        |
+                NON EXP:e
+                {: RESULT = new Non(e) ; :}
                 ;
 
 LDECL   ::=     LDECL:ld DECL:d

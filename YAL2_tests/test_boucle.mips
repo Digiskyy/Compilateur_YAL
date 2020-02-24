@@ -12,25 +12,15 @@ main :
 	sw $a0, 0($s7) # Affectation
 
 #Tant que a différent de 5
-loop1:
+loop2:
 	lw $t1, 0($s7)
 	li $t2, 5
+	beq $t1, $t2, fintantque2
+#Tant que a différent de 0
+loop1:
+	lw $t1, 0($s7)
+	li $t2, 0
 	beq $t1, $t2, fintantque1
-# Affectation  a = a + 1
-	# Operation : a + 1
-	lw $a0, 0($s7)
-
-	# Empilement de $a0
-	sw $a0, 0($sp)
-	add $sp, $sp, -4
-	li $a0, 1
-
-	# Dépilement de $a0
-	add $sp, $sp, 4
-	lw $t8, ($sp)
-	add $a0, $t8, $a0 # Addition
-	sw $a0, 0($s7) # Affectation
-
 # Ecriture de a
 	li $v0, 1
 	lw $a0, 0($s7)
@@ -38,6 +28,9 @@ loop1:
 
 	j loop1
 fintantque1:
+
+	j loop2
+fintantque2:
 
 # Fin du programme
 end :

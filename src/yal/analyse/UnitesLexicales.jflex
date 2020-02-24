@@ -60,6 +60,10 @@ commentaire = [/][/].*
 "repeter"               { return symbol(CodesLexicaux.REPETER, yytext()); }
 "fintantque"            { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
 
+"et"                    { return symbol(CodesLexicaux.ET, yytext()); }
+"ou"                    { return symbol(CodesLexicaux.OU, yytext()); }
+"non"                    { return symbol(CodesLexicaux.NON, yytext()); }
+
 "+"                     { return symbol(CodesLexicaux.PLUS, yytext()); }
 "-"                     { return symbol(CodesLexicaux.MOINS, yytext()); }
 "*"                     { return symbol(CodesLexicaux.FOIS, yytext()); }
@@ -68,6 +72,9 @@ commentaire = [/][/].*
 "<"                     { return symbol(CodesLexicaux.INFERIEUR, yytext()); }
 "=="                    { return symbol(CodesLexicaux.EGALEGAL, yytext()); }
 "!="                    { return symbol(CodesLexicaux.DIFFERENT, yytext()); }
+
+"("                    { return symbol(CodesLexicaux.PARENOUV, yytext()); }
+")"                    { return symbol(CodesLexicaux.PARENFERM, yytext()); }
 
 "="                    { return symbol(CodesLexicaux.EGAL); }
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }

@@ -4,16 +4,24 @@ main :
 #Initialiser $s7 (registre 7) avec $sp
 	move $s7, $sp
 
-# Réserver la place pour 1 variables dans $s7
-	add $sp, $sp,-4
+# Réserver la place pour 2 variables dans $s7
+	add $sp, $sp,-8
 
-# Affectation  a = 0
-	li $a0, 0
+# Affectation  a = 5
+	li $a0, 5
 	sw $a0, 0($s7) # Affectation
 
-# Condition
+# Affectation  b = 0
+	li $a0, 0
+	sw $a0, -4($s7) # Affectation
+
+#Si b égal à 2
+	lw $t1, -4($s7)
+	li $t2, 2
+	bne $t1, $t2, Else1
+#Si a égal à 5
 	lw $t1, 0($s7)
-	li $t2, 10
+	li $t2, 5
 	bne $t1, $t2, Else0
 # Ecriture de a
 	li $v0, 1
@@ -22,50 +30,10 @@ main :
 
 	j endif0
 Else0:
-# Ecriture de 20
-	li $v0, 1
-	li $a0, 20
-	syscall
-
 endif0:
-# Condition
-	lw $t1, 0($s7)
-	li $t2, 10
-	slt $t3, $t1, $t2
-	 li $t4, 0
-	beq $t3, $t4, Else1
-# Ecriture de a
-	li $v0, 1
-	lw $a0, 0($s7)
-	syscall
-
 	j endif1
 Else1:
-# Ecriture de 30
-	li $v0, 1
-	li $a0, 30
-	syscall
-
 endif1:
-# Condition
-	lw $t1, 0($s7)
-	li $t2, 10
-	sgt $t3, $t1, $t2
-	li $t4, 0
-	beq $t3, $t4, Else2
-# Ecriture de a
-	li $v0, 1
-	lw $a0, 0($s7)
-	syscall
-
-	j endif2
-Else2:
-# Ecriture de 40
-	li $v0, 1
-	li $a0, 40
-	syscall
-
-endif2:
 # Fin du programme
 end :
 	li $v0, 10
