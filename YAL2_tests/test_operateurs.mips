@@ -4,76 +4,17 @@ main :
 #Initialiser $s7 (registre 7) avec $sp
 	move $s7, $sp
 
-# Réserver la place pour 1 variables dans $s7
-	add $sp, $sp,-4
+# Réserver la place pour 0 variables dans $s7
+	add $sp, $sp,0
 
-# Affectation  a = 0
-	li $a0, 0
-	sw $a0, 0($s7) # Affectation
-
-# Tant que a < 5
-loop1:
-	# Operation : a < 5
-	lw $a0, 0($s7)
-
-	# Empilement de $a0
-	sw $a0, 0($sp)
-	add $sp, $sp, -4
-	li $a0, 5
-
-	# Dépilement de $a0
-	add $sp, $sp, 4
-	lw $t8, ($sp)
-	slt $a0, $t8, $a0 # Infériorité
-	li $t1, 1
-	bne $a0, $t1, fintantque1
-# Ecriture de a
-	lw $a0, 0($s7)
+# Ecriture de non 1
+	li $a0, 1
+	not $a0, $a0
 	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
 	syscall #Saut de ligne
-
-#Si a == 2
-	# Operation : a == 2
-	lw $a0, 0($s7)
-
-	# Empilement de $a0
-	sw $a0, 0($sp)
-	add $sp, $sp, -4
-	li $a0, 2
-
-	# Dépilement de $a0
-	add $sp, $sp, 4
-	lw $t8, ($sp)
-	seq $a0, $t8, $a0 # Egal
-	li $t1, 1
-	bne $a0, $t1, Else0
-# Affectation  a = 8
-	li $a0, 8
-	sw $a0, 0($s7) # Affectation
-
-	j endif0
-Else0:
-endif0:
-# Affectation  a = a + 1
-	# Operation : a + 1
-	lw $a0, 0($s7)
-
-	# Empilement de $a0
-	sw $a0, 0($sp)
-	add $sp, $sp, -4
-	li $a0, 1
-
-	# Dépilement de $a0
-	add $sp, $sp, 4
-	lw $t8, ($sp)
-	add $a0, $t8, $a0 # Addition
-	sw $a0, 0($s7) # Affectation
-
-	j loop1
-fintantque1:
 
 # Fin du programme
 end :

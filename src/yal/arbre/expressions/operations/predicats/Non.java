@@ -17,6 +17,12 @@ public class Non extends Expression {
 
     @Override
     public String toMIPS() {
-        return "à faire";
+        return expression.toMIPS()+
+                "\tnot $a0, $a0\n";
+    }
+
+    @Override
+    public String toString() {
+        return "non "+expression;
     }
 }
