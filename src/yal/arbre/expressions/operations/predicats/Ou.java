@@ -8,4 +8,14 @@ public class Ou extends Operation {
     public Ou(Expression gauche, Expression droite) {
         super(gauche, droite);
     }
+
+    @Override
+    public String toMIPS() {
+        return "à faire\n";
+    }
+
+    @Override
+    public String toString() {
+        return partieGauche+" ou " +partieDroite;
+    }
 }

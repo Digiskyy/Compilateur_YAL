@@ -8,4 +8,9 @@ public class Et extends Operation {
     public Et(Expression gauche, Expression droite) {
         super(gauche, droite);
     }
+
+    @Override
+    public String toString() {
+        return partieGauche+" et " +partieDroite;
+    }
 }

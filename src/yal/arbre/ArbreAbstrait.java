@@ -5,7 +5,7 @@ public abstract class ArbreAbstrait {
     // numéro de ligne du début de l'instruction
     protected int noLigne ;
     
-    protected ArbreAbstrait(int n) {
+    public ArbreAbstrait(int n) {
         noLigne = n ;
     }
     
