@@ -19,6 +19,6 @@ public class PlusPetitQue extends Operation {
 
     @Override
     public String toString() {
-        return partieGauche+" plus petit que "+partieDroite;
+        return partieGauche+" < "+partieDroite;
     }
 }

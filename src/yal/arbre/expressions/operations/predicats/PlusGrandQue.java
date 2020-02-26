@@ -19,6 +19,6 @@ public class PlusGrandQue extends Operation {
 
     @Override
     public String toString() {
-        return partieGauche+" plus grand que "+partieDroite;
+        return partieGauche+" > "+partieDroite;
     }
 }

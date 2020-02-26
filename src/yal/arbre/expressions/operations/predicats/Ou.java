@@ -7,6 +7,7 @@ public class Ou extends Operation {
 
     public Ou(Expression gauche, Expression droite) {
         super(gauche, droite);
+        System.out.println("yolo");
     }
 
     @Override

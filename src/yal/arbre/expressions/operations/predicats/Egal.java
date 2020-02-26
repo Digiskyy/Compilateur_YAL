@@ -17,6 +17,6 @@ public class Egal extends Operation {
 
     @Override
     public String toString() {
-        return partieGauche+" égal à "+partieDroite;
+        return partieGauche+" == "+partieDroite;
     }
 }
