@@ -5,14 +5,14 @@ import yal.arbre.expressions.Expression;
 
 public class Boucle extends Instruction {
     private Expression exp;
-    private BlocDInstructions tantQue;
+    private BlocDInstructions listeInstructions;
     private static int cpt = 0;
     private int compteur;
 
     public Boucle(Expression e, BlocDInstructions b) {
         super(e.getNoLigne());
         exp = e;
-        tantQue = b;
+        listeInstructions = b;
         cpt ++;
         compteur = cpt;
     }
@@ -25,12 +25,14 @@ public class Boucle extends Instruction {
     @Override
     public String toMIPS() {
         StringBuilder strB = new StringBuilder();
-        strB.append("#Tant que "+exp.toString()+"\n");
-        strB.append("loop"+compteur+":\n");
-        strB.append(exp.toMIPS()+"fintantque"+compteur+"\n");
-        strB.append(tantQue.toMIPS());
-        strB.append("\tj loop"+compteur+"\n");
-        strB.append("fintantque"+compteur+":\n\n");
+        strB.append("# Tant que " + exp.toString() + "\n");
+        strB.append("loop" + compteur + ":\n");
+        strB.append(exp.toMIPS()
+                + "\tli $t1, 1\n"
+                + "\tbne $a0, $t1, fintantque" + compteur + "\n");
+        strB.append(listeInstructions.toMIPS());
+        strB.append("\tj loop" + compteur + "\n");
+        strB.append("fintantque" + compteur + ":\n\n");
         return strB.toString();
     }
 }

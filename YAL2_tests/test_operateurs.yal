@@ -1,4 +1,12 @@
 programme idf
 debut
-
+entier a;
+a = 0;
+tantque a < 5 repeter
+    ecrire a;
+    si a == 2 alors
+        a = 8;
+    finsi
+    a = a +1;
+fintantque
 fin
