@@ -73,11 +73,11 @@ non terminal Instruction INST, DECL, DECL_VAR, AFF, CONDITION, BOUCLE;
 
 /* Priorities of operations */
 
+precedence left ET, OU;
 precedence left EGALEGAL, DIFFERENT;
 precedence left INFERIEUR, SUPERIEUR;
 precedence left PLUS, MOINS;
 precedence left FOIS, DIVISE;
-precedence left ET, OU;
 
 
 /* ----------------------------Grammar Section-------------------- */

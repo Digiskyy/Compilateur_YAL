@@ -35,16 +35,4 @@ public class Variable extends Expression {
     public String toString() {
         return idf;
     }
-
-    @Override
-    public String getComparaison1() {
-        verifier();
-        return "\tlw $t1, "+ symboleDroit.getTaille() + "($s7)\n";
-    }
-
-    @Override
-    public String getComparaison2() {
-        verifier();
-        return "\tlw $t2, "+ symboleDroit.getTaille() + "($s7)\n";
-    }
 }

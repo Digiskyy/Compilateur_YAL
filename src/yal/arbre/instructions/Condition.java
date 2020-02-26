@@ -52,7 +52,7 @@ public class Condition extends Instruction {
         verifier();
         StringBuilder strB = new StringBuilder();
         strB.append("#Si "+exp.toString()+"\n");
-        strB.append(exp.toMIPS()+"Else"+compteurActuel+"\n");
+        strB.append(exp.toMIPS()+"\tli $t1, 1\n"+"\tbne $a0, $t1, Else"+compteurActuel+"\n");
         strB.append(bloc.toMIPS());
         strB.append("\tj endif"+compteurActuel+"\n");
         strB.append("Else"+compteurActuel+":\n");

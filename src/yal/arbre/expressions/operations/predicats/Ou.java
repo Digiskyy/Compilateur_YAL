@@ -7,12 +7,13 @@ public class Ou extends Operation {
 
     public Ou(Expression gauche, Expression droite) {
         super(gauche, droite);
-        System.out.println("yolo");
     }
 
     @Override
     public String toMIPS() {
-        return "à faire\n";
+        StringBuilder strb = new StringBuilder();
+        strb.append(partieGauche.toMIPS()+"");
+        return strb.toString();
     }
 
     @Override

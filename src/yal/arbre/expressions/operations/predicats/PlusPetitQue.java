@@ -11,10 +11,29 @@ public class PlusPetitQue extends Operation {
 
     @Override
     public String toMIPS() {
-        return partieGauche.getComparaison1() + partieDroite.getComparaison2()+
-                 "\tslt $t3, $t1, $t2\n"
-                +"\tli $t4, 0\n"
-                +"\tbeq $t3, $t4, ";
+        StringBuilder str = new StringBuilder();
+        str.append(super.toMIPS()+toString()+"\n");
+
+        // Evaluation de l'opérande gauche et mise de sa valeur dans $a0
+        str.append(partieGauche.toMIPS() + "\n");
+
+        // Empilement $a0
+        str.append("\t# Empilement de $a0\n");
+        str.append("\tsw $a0, 0($sp)\n");
+        str.append("\tadd $sp, $sp, -4\n");
+
+        // Evaluation de l'opérande droit et mise de sa valeur dans $a0
+        str.append(partieDroite.toMIPS() + "\n");
+
+        // Dépilement de $a0 et mise de la valeur dans $t8
+        str.append("\t# Dépilement de $a0\n");
+        str.append("\tadd $sp, $sp, 4\n");
+        str.append("\tlw $t8, ($sp)\n");
+
+        // Infériorité et mise dans $a0
+        str.append("\tslt $a0, $t8, $a0 # Infériorité\n");
+
+        return str.toString();
     }
 
     @Override

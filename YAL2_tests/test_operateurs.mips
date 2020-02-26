@@ -7,9 +7,20 @@ main :
 # Réserver la place pour 0 variables dans $s7
 	add $sp, $sp,0
 
-# Ecriture de 5 != 5 ou 5 != 4
-	li $t2, 4
-	beq $t1, $t2, 	li $v0, 1
+# Ecriture de 5 < 3
+	# Operation : 5 < 3
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 3
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	slt $a0, $t8, $a0 # Infériorité
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 

@@ -9,10 +9,4 @@ public abstract class Expression extends ArbreAbstrait
     {
         super(n) ;
     }
-
-    public String getComparaison1(){ return "";
-    }
-
-    public String getComparaison2(){ return "";
-    }
 }
