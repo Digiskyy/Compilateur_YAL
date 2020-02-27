@@ -8,6 +8,7 @@ import yal.exceptions.AnalyseSemantiqueException;
 public class Variable extends Expression {
     private String idf;
     private Symbole symboleDroit;
+    private boolean zero = false;
 
     public Variable(String idf, int n) {
         super(n);
@@ -34,5 +35,13 @@ public class Variable extends Expression {
     @Override
     public String toString() {
         return idf;
+    }
+
+    public void setZero(boolean zero) {
+        this.zero = zero;
+    }
+
+    public boolean isZero() {
+        return zero;
     }
 }

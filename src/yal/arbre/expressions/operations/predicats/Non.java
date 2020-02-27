@@ -18,7 +18,7 @@ public class Non extends Expression {
     @Override
     public String toMIPS() {
         return expression.toMIPS()+
-                "\tnot $a0, $a0\n";
+                "\txori $a0, $a0, 1\n";
     }
 
     @Override

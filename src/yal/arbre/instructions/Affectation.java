@@ -11,7 +11,6 @@ public class Affectation extends Instruction {
     protected String partieG;
     protected int deplacement;
     protected Expression partieD;
-    private  Symbole symboleDroit;
 
 
     /**Gère les affectations entre deux variables

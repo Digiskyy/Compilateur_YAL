@@ -38,8 +38,8 @@ main :
 	sw $a0, 0($s7) # Affectation
 
 # Ecriture de a
-	li $v0, 1
 	lw $a0, 0($s7)
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
@@ -61,8 +61,8 @@ main :
 	sw $a0, 0($s7) # Affectation
 
 # Ecriture de a
-	li $v0, 1
 	lw $a0, 0($s7)
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
@@ -84,8 +84,8 @@ main :
 	sw $a0, -8($s7) # Affectation
 
 # Ecriture de c
-	li $v0, 1
 	lw $a0, -8($s7)
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
@@ -107,8 +107,8 @@ main :
 	sw $a0, -8($s7) # Affectation
 
 # Ecriture de c
-	li $v0, 1
 	lw $a0, -8($s7)
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
@@ -131,8 +131,8 @@ main :
 	sw $a0, -12($s7) # Affectation
 
 # Ecriture de d
-	li $v0, 1
 	lw $a0, -12($s7)
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
@@ -155,12 +155,32 @@ main :
 	sw $a0, -12($s7) # Affectation
 
 # Ecriture de d
-	li $v0, 1
 	lw $a0, -12($s7)
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
 	syscall #Saut de ligne
+
+# Affectation  a = 0
+	li $a0, 0
+	sw $a0, 0($s7) # Affectation
+
+# Affectation  c = 10 / a (Division entière)
+	# Operation : 10 / a (Division entière)
+	li $a0, 10
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	lw $a0, 0($s7)
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	div $t8, $a0 # Division entière
+	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+	sw $a0, -8($s7) # Affectation
 
 # Affectation  e = 8 / 4 (Division entière)
 	# Operation : 8 / 4 (Division entière)
@@ -179,15 +199,14 @@ main :
 	sw $a0, -16($s7) # Affectation
 
 # Ecriture de e
-	li $v0, 1
 	lw $a0, -16($s7)
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
 	syscall #Saut de ligne
 
 # Ecriture de 20 / e (Division entière)
-	li $v0, 1
 	# Operation : 20 / e (Division entière)
 	li $a0, 20
 
@@ -201,13 +220,13 @@ main :
 	lw $t8, ($sp)
 	div $t8, $a0 # Division entière
 	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
 	syscall #Saut de ligne
 
 # Ecriture de 13 / 4 (Division entière)
-	li $v0, 1
 	# Operation : 13 / 4 (Division entière)
 	li $a0, 13
 
@@ -221,13 +240,13 @@ main :
 	lw $t8, ($sp)
 	div $t8, $a0 # Division entière
 	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
 	syscall #Saut de ligne
 
 # Ecriture de 10 + 2 * 3 - 12 / 2 (Division entière)
-	li $v0, 1
 	# Operation : 10 + 2 * 3 - 12 / 2 (Division entière)
 	# Operation : 10 + 2 * 3
 	li $a0, 10
@@ -275,13 +294,13 @@ main :
 	add $sp, $sp, 4
 	lw $t8, ($sp)
 	sub $a0, $t8, $a0 # Soustraction
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 
 	syscall #Saut de ligne
 
 # Ecriture de 1000000000 * d
-	li $v0, 1
 	# Operation : 1000000000 * d
 	li $a0, 1000000000
 
@@ -295,6 +314,71 @@ main :
 	lw $t8, ($sp)
 	mult $t8, $a0 # Multiplication
 	mflo $a0 # Les 32 premiers bits du résultats sont stockés dans le registre lo
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 10 + 3 * 10 + 5 - 20 - 2
+	# Operation : 10 + 3 * 10 + 5 - 20 - 2
+	# Operation : 10 + 3 * 10 + 5 - 20
+	# Operation : 10 + 3 * 10
+	# Operation : 10 + 3
+	li $a0, 10
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 3
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	add $a0, $t8, $a0 # Addition
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 10
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	mult $t8, $a0 # Multiplication
+	mflo $a0 # Les 32 premiers bits du résultats sont stockés dans le registre lo
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	# Operation : 5 - 20
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 20
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sub $a0, $t8, $a0 # Soustraction
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	add $a0, $t8, $a0 # Addition
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sub $a0, $t8, $a0 # Soustraction
+	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
 	addi $v0, $0, 0xB 

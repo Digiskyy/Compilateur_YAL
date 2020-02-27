@@ -1,13 +1,28 @@
 package yal.arbre.expressions.operations;
 
+import yal.analyse.Entree;
+import yal.analyse.Symbole;
+import yal.analyse.TDS;
+import yal.arbre.expressions.ConstanteEntiere;
 import yal.arbre.expressions.Expression;
 import yal.arbre.expressions.Operation;
+import yal.arbre.expressions.Variable;
+import yal.exceptions.AnalyseSemantiqueException;
 
 public class Division extends Operation
 {
     public Division(Expression gauche, Expression droite)
     {
         super(gauche, droite);
+    }
+
+    @Override
+    public void verifier() {
+        if (partieDroite instanceof ConstanteEntiere){
+            if(partieDroite.toString().equals("0")){
+                throw new AnalyseSemantiqueException(noLigne, "Division par zéro.");
+            }
+        }
     }
 
     /**
@@ -17,6 +32,7 @@ public class Division extends Operation
     @Override
     public String toMIPS()
     {
+        verifier();
         StringBuilder str = new StringBuilder();
         str.append(super.toMIPS()+toString()+"\n");
 

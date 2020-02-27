@@ -78,6 +78,7 @@ precedence left EGALEGAL, DIFFERENT;
 precedence left INFERIEUR, SUPERIEUR;
 precedence left PLUS, MOINS;
 precedence left FOIS, DIVISE;
+precedence left PARENOUV, PARENFERM;
 
 
 /* ----------------------------Grammar Section-------------------- */
