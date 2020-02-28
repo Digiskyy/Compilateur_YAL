@@ -60,9 +60,11 @@ commentaire = [/][/].*
 "repeter"               { return symbol(CodesLexicaux.REPETER, yytext()); }
 "fintantque"            { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
 
+"fonction"              { return symbol(CodesLexicaux.FONCTION, yytext()); }
+
 "et"                    { return symbol(CodesLexicaux.ET, yytext()); }
 "ou"                    { return symbol(CodesLexicaux.OU, yytext()); }
-"non"                    { return symbol(CodesLexicaux.NON, yytext()); }
+"non"                   { return symbol(CodesLexicaux.NON, yytext()); }
 
 "+"                     { return symbol(CodesLexicaux.PLUS, yytext()); }
 "-"                     { return symbol(CodesLexicaux.MOINS, yytext()); }

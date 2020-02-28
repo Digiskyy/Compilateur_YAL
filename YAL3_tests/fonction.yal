@@ -1,0 +1,9 @@
+programme fonctiontest
+debut
+entier a;
+fonction nomfonction()
+debut
+    ecrire 10;
+fin
+ecrire 5;
+fin

@@ -24,8 +24,6 @@ debut
 
     d = c * d; // 240
     ecrire d;
-    a = 0;
-    c = 10/a;
 
     e = 8 / 4;
     ecrire e; // 2
