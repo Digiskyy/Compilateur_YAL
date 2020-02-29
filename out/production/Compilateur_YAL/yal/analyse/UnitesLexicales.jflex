@@ -61,6 +61,7 @@ commentaire = [/][/].*
 "fintantque"            { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
 
 "fonction"              { return symbol(CodesLexicaux.FONCTION, yytext()); }
+"retourne"              { return symbol(CodesLexicaux.RETOURNE, yytext()); }
 
 "et"                    { return symbol(CodesLexicaux.ET, yytext()); }
 "ou"                    { return symbol(CodesLexicaux.OU, yytext()); }

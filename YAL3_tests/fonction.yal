@@ -1,9 +1,12 @@
 programme fonctiontest
 debut
 entier a;
-fonction nomfonction()
+entier fonction nomfonction()
 debut
-    ecrire 10;
+    entier b;
+    b = a + 10;
+    retourne b;
 fin
-ecrire 5;
+a = nomfonction();
+ecrire a;
 fin

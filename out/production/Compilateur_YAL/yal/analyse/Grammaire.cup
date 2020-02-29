@@ -1,5 +1,6 @@
 package yal.analyse ;
 
+import java_cup.symbol;
 import java.util.*;
 import yal.arbre.* ;
 import yal.arbre.expressions.* ;
@@ -58,13 +59,14 @@ parser code {:
 
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE, PARENOUV, PARENFERM, FONCTION;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, EGAL, LIRE, PARENOUV, PARENFERM, FONCTION, RETOURNE;
 terminal Symbol    PLUS, MOINS, FOIS, DIVISE, DIFFERENT, EGALEGAL, SUPERIEUR, INFERIEUR;
-terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE, ET, OU, NON, PARAMETRES;
+terminal Symbol    SI, ALORS, SINON, FINSI, TANTQUE, REPETER, FINTANTQUE, ET, OU, NON;
 terminal String    IDF, CSTENTIERE, TYPE;
 
 /* Non terminals used in the grammar section.  */
 
+non terminal symbol START_PROGRAMME, START_FONCTION;
 non terminal ArbreAbstrait PROG;
 non terminal BlocDInstructions LINST, LDECL;
 non terminal Expression EXP;
@@ -85,11 +87,17 @@ precedence left PARENOUV, PARENFERM;
 
 start with PROG ;
 
-PROG    ::=     PROGRAMME IDF DEBUT LDECL:ld LINST:li FIN
-                {: RESULT = li ; :}
+START_PROGRAMME ::= PROGRAMME
+                   {: TDS.getInstance().entreeBloc(); :}
+                   ;
+
+PROG    ::=     START_PROGRAMME IDF DEBUT LDECL:ld LINST:li FIN
+                {: RESULT = li ;
+                 TDS.getInstance().sortieBloc();:}
                 |
-                PROGRAMME IDF DEBUT LINST:li FIN
-                {: RESULT = li ; :}
+                START_PROGRAMME IDF DEBUT LINST:li FIN
+                {: RESULT = li ;
+                 TDS.getInstance().sortieBloc();:}
                 ;
 
 LINST   ::=     LINST:li  INST:i
@@ -163,6 +171,9 @@ EXP    ::=      CSTENTIERE:c
         |
                 NON EXP:e
                 {: RESULT = new Non(e) ; :}
+        |
+                IDF:i PARENOUV PARENFERM
+                {: RESULT = new AppelFonction(i, ileft+1) ; :}
                 ;
 
 LDECL   ::=     LDECL:ld DECL:d
@@ -204,6 +215,23 @@ BOUCLE    ::=   TANTQUE EXP:e REPETER LINST:li FINTANTQUE
                 {: RESULT = new Boucle(e, li) ; :}
                 ;
 
-DECL_FONCTION ::= FONCTION IDF:i PARENOUV PARENFERM DEBUT LINST:li FIN
-                  {: RESULT = new Fonction(i, li) ; :}
-                  ;
+START_FONCTION ::= FONCTION
+                   {: TDS.getInstance().entreeBloc(); :}
+                   ;
+
+DECL_FONCTION ::= START_FONCTION IDF:i PARENOUV PARENFERM DEBUT LDECL LINST:li FIN
+                  {: RESULT = new Fonction(i, li) ;
+                  TDS.getInstance().sortieBloc();:}
+         |
+                  TYPE START_FONCTION IDF:i PARENOUV PARENFERM DEBUT LDECL LINST:li RETOURNE EXP POINTVIRGULE  FIN
+                  {: RESULT = new Fonction(i, li) ;
+                  TDS.getInstance().sortieBloc();:}
+         |
+                   START_FONCTION IDF:i PARENOUV PARENFERM DEBUT LINST:li FIN
+                   {: RESULT = new Fonction(i, li) ;
+                    TDS.getInstance().sortieBloc();:}
+         |
+                   TYPE START_FONCTION IDF:i PARENOUV PARENFERM DEBUT LINST:li RETOURNE EXP POINTVIRGULE  FIN
+                   {: RESULT = new Fonction(i, li) ;
+                    TDS.getInstance().sortieBloc();:}
+                    ;

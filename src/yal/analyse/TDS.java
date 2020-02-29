@@ -43,14 +43,14 @@ public class TDS
 
         table.put(e,s);
         cpt++;
+    }
 
-        /*
-        if(s.estEntier() || s.estBooleen()){
-            tailleType = 4;
-        }else if (s.estReel()){
-            tailleType = 8;
-        }
-         */
+    public void entreeBloc(){
+        System.out.println("ENTREE");
+    }
+
+    public void sortieBloc(){
+        System.out.println("SORTIE");
     }
 
     /**

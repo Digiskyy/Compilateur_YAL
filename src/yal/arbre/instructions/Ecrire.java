@@ -32,4 +32,8 @@ public class Ecrire extends Instruction
                 "\tsyscall #Saut de ligne\n\n"; // Appel système à la fin de l'écriture
     }
 
+    @Override
+    public String toString() {
+        return "Ecriture de "+exp;
+    }
 }

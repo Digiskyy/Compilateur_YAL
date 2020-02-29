@@ -4,11 +4,15 @@ main :
 #Initialiser $s7 (registre 7) avec $sp
 	move $s7, $sp
 
-# Réserver la place pour 1 variables dans $s7
-	add $sp, $sp,-4
+# Réserver la place pour 2 variables dans $s7
+	add $sp, $sp,-8
 
-# Ecriture de 5
-	li $a0, 5
+# Affectation  a = Appel de la fonction nomfonction
+#Fonction
+	sw $a0, 0($s7) # Affectation
+
+# Ecriture de a
+	lw $a0, 0($s7)
 	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 
