@@ -1,0 +1,10 @@
+programme essai7
+debut
+	entier x;
+	entier y;
+	y=2;
+	entier z;
+	lire z;
+	// Erreurs à avoir :
+	// Ligne 6 : Erreur syntaxique (toutes les déclarations sont AVANT les instructions)
+fin

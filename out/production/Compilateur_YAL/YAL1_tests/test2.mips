@@ -1,0 +1,19 @@
+# Début d'un programme
+.text
+main :
+#Initialiser $s7 (registre 7) avec $sp
+	move $s7, $sp
+
+# Réserver la place pour 1 variables dans $s7
+	add $sp, $sp,-4
+
+# Affectation a = 5
+	li $v0, 5
+	sw $v0, 0($s7)
+
+null
+	syscall # Appel système pour l'écriture
+# Fin du programme
+end :
+	li $v0, 10
+	syscall

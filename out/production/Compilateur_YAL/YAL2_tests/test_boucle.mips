@@ -1,0 +1,38 @@
+# Début d'un programme
+.text
+main :
+#Initialiser $s7 (registre 7) avec $sp
+	move $s7, $sp
+
+# Réserver la place pour 1 variables dans $s7
+	add $sp, $sp,-4
+
+# Affectation  a = 0
+	li $a0, 0
+	sw $a0, 0($s7) # Affectation
+
+#Tant que a différent de 5
+loop2:
+	lw $t1, 0($s7)
+	li $t2, 5
+	beq $t1, $t2, fintantque2
+#Tant que a différent de 0
+loop1:
+	lw $t1, 0($s7)
+	li $t2, 0
+	beq $t1, $t2, fintantque1
+# Ecriture de a
+	li $v0, 1
+	lw $a0, 0($s7)
+	syscall
+
+	j loop1
+fintantque1:
+
+	j loop2
+fintantque2:
+
+# Fin du programme
+end :
+	li $v0, 10
+	syscall

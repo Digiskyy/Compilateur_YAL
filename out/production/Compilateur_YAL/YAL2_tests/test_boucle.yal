@@ -1,0 +1,10 @@
+programme boucle
+debut
+entier a;
+a = 0;
+tantque a != 5 repeter
+    tantque a != 0 repeter
+        ecrire a;
+    fintantque
+fintantque
+fin

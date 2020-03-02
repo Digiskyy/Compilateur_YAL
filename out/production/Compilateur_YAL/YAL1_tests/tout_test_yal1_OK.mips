@@ -1,0 +1,36 @@
+# Début d'un programme
+.text
+main :
+#Initialiser $s7 (registre 7) avec $sp
+	move $s7, $sp
+
+# Réserver la place pour 3 variables dans $s7
+	add $sp, $sp,-12
+
+# Affectation c = 14
+	li $v0, 14
+	sw $v0, -8($s7)
+
+# Affectation b = c
+	lw $v0, -8($s7)
+	sw $v0, -4($s7)
+
+null
+	syscall # Appel système pour l'écriture
+#Lire b
+	li $v0, 5 #Code du lire
+	syscall
+	sw $v0,-4($s7)
+
+null
+	syscall # Appel système pour l'écriture
+# Affectation c = 15
+	li $v0, 15
+	sw $v0, -8($s7)
+
+null
+	syscall # Appel système pour l'écriture
+# Fin du programme
+end :
+	li $v0, 10
+	syscall

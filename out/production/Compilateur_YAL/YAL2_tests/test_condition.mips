@@ -1,0 +1,40 @@
+# Début d'un programme
+.text
+main :
+#Initialiser $s7 (registre 7) avec $sp
+	move $s7, $sp
+
+# Réserver la place pour 2 variables dans $s7
+	add $sp, $sp,-8
+
+# Affectation  a = 5
+	li $a0, 5
+	sw $a0, 0($s7) # Affectation
+
+# Affectation  b = 0
+	li $a0, 0
+	sw $a0, -4($s7) # Affectation
+
+#Si b égal à 2
+	lw $t1, -4($s7)
+	li $t2, 2
+	bne $t1, $t2, Else1
+#Si a égal à 5
+	lw $t1, 0($s7)
+	li $t2, 5
+	bne $t1, $t2, Else0
+# Ecriture de a
+	li $v0, 1
+	lw $a0, 0($s7)
+	syscall
+
+	j endif0
+Else0:
+endif0:
+	j endif1
+Else1:
+endif1:
+# Fin du programme
+end :
+	li $v0, 10
+	syscall

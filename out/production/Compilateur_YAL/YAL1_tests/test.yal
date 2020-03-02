@@ -1,0 +1,12 @@
+programme test
+debut
+entier a;
+entier b;
+entier c;
+a = 5;
+b = 6;
+c = b;
+ecrire a;
+ecrire b;
+ecrire c;
+fin

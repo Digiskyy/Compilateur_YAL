@@ -1,0 +1,17 @@
+programme bon
+debut
+
+entier a;
+entier b;
+entier c;
+
+c = 14;
+b = c;
+
+ecrire a;
+lire b;
+ecrire b;
+c = 15;
+ecrire c;
+
+fin

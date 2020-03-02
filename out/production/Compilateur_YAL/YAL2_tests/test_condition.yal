@@ -1,0 +1,12 @@
+programme condition
+debut
+entier a;
+entier b;
+a = 5;
+b = 0;
+si b == 2 alors
+si a == 5 alors
+ecrire a;
+finsi
+finsi
+fin

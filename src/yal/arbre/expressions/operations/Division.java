@@ -1,12 +1,8 @@
 package yal.arbre.expressions.operations;
 
-import yal.analyse.Entree;
-import yal.analyse.Symbole;
-import yal.analyse.TDS;
 import yal.arbre.expressions.ConstanteEntiere;
 import yal.arbre.expressions.Expression;
 import yal.arbre.expressions.Operation;
-import yal.arbre.expressions.Variable;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Division extends Operation

@@ -1,0 +1,578 @@
+# Début d'un programme
+.text
+main :
+#Initialiser $s7 (registre 7) avec $sp
+	move $s7, $sp
+
+# Réserver la place pour 3 variables dans $s7
+	add $sp, $sp,-12
+
+# Affectation  a = 2
+	li $a0, 2
+	sw $a0, 0($s7) # Affectation
+
+# Affectation  b = 5
+	li $a0, 5
+	sw $a0, -4($s7) # Affectation
+
+# Affectation  c = b + a
+	# Operation : b + a
+	lw $a0, -4($s7)
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	lw $a0, 0($s7)
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	add $a0, $t8, $a0 # Addition
+	sw $a0, -8($s7) # Affectation
+
+# Ecriture de c
+	lw $a0, -8($s7)
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Affectation  a = -a
+	# Operation : a * -1
+	lw $a0, 0($s7)
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, -1
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	mult $t8, $a0 # Multiplication
+	mflo $a0 # Les 32 premiers bits du résultats sont stockés dans le registre lo
+	sw $a0, 0($s7) # Affectation
+
+# Ecriture de a
+	lw $a0, 0($s7)
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5
+	li $a0, 5
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5
+	li $a0, 5
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de -1
+	# Operation : 1 * -1
+	li $a0, 1
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, -1
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	mult $t8, $a0 # Multiplication
+	mflo $a0 # Les 32 premiers bits du résultats sont stockés dans le registre lo
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 - 2
+	# Operation : 5 - 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sub $a0, $t8, $a0 # Soustraction
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 + 2
+	# Operation : 5 + 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	add $a0, $t8, $a0 # Addition
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 < 2
+	# Operation : 5 < 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	slt $a0, $t8, $a0 # Infériorité
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 2 < 5
+	# Operation : 2 < 5
+	li $a0, 2
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	slt $a0, $t8, $a0 # Infériorité
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 > 2
+	# Operation : 5 > 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sgt $a0, $t8, $a0 # Supériorité
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 2 > 5
+	# Operation : 2 > 5
+	li $a0, 2
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sgt $a0, $t8, $a0 # Supériorité
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 == 2
+	# Operation : 5 == 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	seq $a0, $t8, $a0 # Egal
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 == 5
+	# Operation : 5 == 5
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	seq $a0, $t8, $a0 # Egal
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 != 2
+	# Operation : 5 != 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 != 5
+	# Operation : 5 != 5
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 / 2 (Division entière)
+	# Operation : 5 / 2 (Division entière)
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	div $t8, $a0 # Division entière
+	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 * 2
+	# Operation : 5 * 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	mult $t8, $a0 # Multiplication
+	mflo $a0 # Les 32 premiers bits du résultats sont stockés dans le registre lo
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 2 / 5 (Division entière)
+	# Operation : 2 / 5 (Division entière)
+	li $a0, 2
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	div $t8, $a0 # Division entière
+	mflo $a0 # Le dividende est stocké dans le registre lo, le reste dans le registre hi.
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 2 * 5
+	# Operation : 2 * 5
+	li $a0, 2
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	mult $t8, $a0 # Multiplication
+	mflo $a0 # Les 32 premiers bits du résultats sont stockés dans le registre lo
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 != 5 et 5 != 4
+	# Operation : 5 != 5 et 5 != 4
+	# Operation : 5 != 5
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	# Operation : 5 != 4
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 4
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	and $a0, $t8, $a0 # Et
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 4 != 5 et 5 != 4
+	# Operation : 4 != 5 et 5 != 4
+	# Operation : 4 != 5
+	li $a0, 4
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	# Operation : 5 != 4
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 4
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	and $a0, $t8, $a0 # Et
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 != 5 ou 5 != 4
+	# Operation : 5 != 5 ou 5 != 4
+	# Operation : 5 != 5
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	# Operation : 5 != 4
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 4
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	or $a0, $t8, $a0 # Ou
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de 5 != 5 ou 4 != 4
+	# Operation : 5 != 5 ou 4 != 4
+	# Operation : 5 != 5
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 5
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	# Operation : 4 != 4
+	li $a0, 4
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 4
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	or $a0, $t8, $a0 # Ou
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de non 5 == 2
+	# Operation : 5 == 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	seq $a0, $t8, $a0 # Egal
+	xori $a0, $a0, 1
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Ecriture de non 5 != 2
+	# Operation : 5 != 2
+	li $a0, 5
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+	li $a0, 2
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	sne $a0, $t8, $a0 # Different
+	xori $a0, $a0, 1
+	li $v0, 1
+	syscall
+	addi $a0, $0, 0xA 
+	addi $v0, $0, 0xB 
+	syscall #Saut de ligne
+
+# Fin du programme
+end :
+	li $v0, 10
+	syscall

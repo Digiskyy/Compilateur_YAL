@@ -1,35 +1,21 @@
 package yal.analyse;
 
-public class Symbole
+/**
+ * Un symbole peut représenter une variable (son type) ou une fonction (sa signature)
+ */
+public abstract class Symbole
 {
-    public final String type;
     public int taille;
+    private Bloc blocOuJeSuis; // Bloc où est déclaré le symbole (son bloc père)
 
-    public Symbole(String type)
+    public Symbole(Bloc bloc)
     {
-        this.type = type;
-        taille = TDS.getInstance().tailleVariable();
+        blocOuJeSuis = bloc;
+        taille = bloc.getTailleVariable();
     }
 
-    @Override
-    public String toString()
+    public int getTaille()
     {
-        return type;
-    }
-
-    public int getTaille() {
         return taille;
-    }
-
-    public boolean estEntier(){
-        return type.equals("entier");
-    }
-
-    public boolean estReel(){
-        return type.equals("reel");
-    }
-
-    public boolean estBooleen(){
-        return type.equals("booleen");
     }
 }

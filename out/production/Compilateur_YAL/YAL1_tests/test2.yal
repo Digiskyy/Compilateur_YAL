@@ -1,0 +1,7 @@
+programme test
+debut
+entier a; 
+a = 5;
+ecrire a;
+
+fin

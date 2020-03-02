@@ -2,12 +2,12 @@ package yal.arbre.instructions;
 
 import yal.analyse.Entree;
 import yal.analyse.Symbole;
-import yal.analyse.TDS;
+import yal.analyse.Bloc;
 import yal.arbre.expressions.Expression;
-import yal.arbre.expressions.Variable;
 import yal.exceptions.AnalyseSemantiqueException;
 
-public class Affectation extends Instruction {
+public class Affectation extends Instruction
+{
     protected String partieG;
     protected int deplacement;
     protected Expression partieD;
@@ -24,13 +24,14 @@ public class Affectation extends Instruction {
     }
 
     @Override
-    public void verifier() {
+    public void verifier()
+    {
         Entree e = new Entree(partieG);
-        Symbole s = TDS.getInstance().identifier(e);
+        Symbole s = Bloc.getInstance().identifier(e);
+
         //On vérifie que la variable qui va prendre l'affectation est déclarée
-        if(s==null){
+        if(s==null)
             throw new AnalyseSemantiqueException(noLigne, partieG + " n'a pas été déclaré");
-        }
         deplacement = s.getTaille();
     }
 
