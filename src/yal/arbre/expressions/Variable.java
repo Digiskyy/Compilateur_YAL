@@ -3,6 +3,7 @@ package yal.arbre.expressions;
 import yal.analyse.Entree;
 import yal.analyse.Symbole;
 import yal.analyse.Bloc;
+import yal.analyse.TDS;
 import yal.exceptions.AnalyseSemantiqueException;
 
 
@@ -23,7 +24,7 @@ public class Variable extends Expression
     public void verifier()
     {
         Entree entreeDroite = new Entree(idf);
-        symboleDroit = Bloc.getInstance().identifier(entreeDroite);
+        symboleDroit = TDS.getInstance().getBlocActuel().identifier(entreeDroite);
 
         //On vérifie que la variable qui donne sa valeur est déclarée
         if (symboleDroit == null)

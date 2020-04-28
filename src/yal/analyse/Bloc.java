@@ -22,6 +22,8 @@ public class Bloc
     public Bloc() // Pour le bloc principal qui n'a pas de bloc père
     {
         blocRacine = true;
+        blocsFils = new ArrayList<>();
+        table = new HashMap<Entree, Symbole>();
     }
 
     public Bloc(Bloc blocPere)
@@ -67,14 +69,6 @@ public class Bloc
         blocsFils.add(fils);
     }
 
-    public void entreeBloc(){
-        System.out.println("ENTREE");
-    }
-
-    public void sortieBloc(){
-        System.out.println("SORTIE");
-    }
-
     /**
      * Parcourt toutes les déclarations de la tables des symboles, si le symbole cherché n'y est pas,
      * on remonte et fait la même chose dans le bloc père, et ainsi de suite, jusqu'à le trouver.
@@ -85,7 +79,7 @@ public class Bloc
     public Symbole identifier(Entree e)
     {
         Symbole s = table.get(e);
-        if(s == null) // Si le symbole n'est pas dans ce bloc, on remonte dans le bloc père
+        if(s == null && !blocRacine) // Si le symbole n'est pas dans ce bloc, on remonte dans le bloc père
             s = blocPere.identifier(e);
 
         return s;
@@ -104,5 +98,12 @@ public class Bloc
     public void setInstructions(boolean instructions)
     {
         this.instructions = instructions;
+    }
+
+    public Bloc getBlocPere()
+    {
+        if(blocRacine)
+            return this;
+        return blocPere;
     }
 }

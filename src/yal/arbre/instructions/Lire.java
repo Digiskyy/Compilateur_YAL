@@ -3,6 +3,7 @@ package yal.arbre.instructions;
 import yal.analyse.Entree;
 import yal.analyse.Symbole;
 import yal.analyse.Bloc;
+import yal.analyse.TDS;
 import yal.exceptions.AnalyseSemantiqueException;
 
 
@@ -26,7 +27,7 @@ public class Lire extends Instruction
     public void verifier()
     {
         Entree e = new Entree(idf);
-        s = Bloc.getInstance().identifier(e);
+        s = TDS.getInstance().getBlocActuel().identifier(e);
 
         // On vérifie que la variable qui donne sa valeur est déclarée
         if(s == null)

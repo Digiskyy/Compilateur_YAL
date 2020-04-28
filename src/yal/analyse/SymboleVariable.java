@@ -4,9 +4,9 @@ public class SymboleVariable extends Symbole
 {
     private final String type;
 
-    public SymboleVariable(Bloc bloc, String type)
+    public SymboleVariable(String type)
     {
-        super(bloc);
+        super(TDS.getInstance().getBlocActuel());
         this.type = type;
     }
 

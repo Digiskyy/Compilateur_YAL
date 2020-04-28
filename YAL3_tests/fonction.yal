@@ -4,11 +4,9 @@ entier a;
 entier fonction nomfonction()
 debut
     entier b;
-    b = a + 10;
+    b = 10;
     retourne b;
 fin
 a = nomfonction();
-b = nomfctr
-# ecrit euh moi j'ai réservé trois variables a, b nomfonction
 ecrire a;
 fin
