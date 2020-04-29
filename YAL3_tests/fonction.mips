@@ -4,15 +4,66 @@ main :
 #Initialiser $s7 (registre 7) avec $sp
 	move $s7, $sp
 
-# Réserver la place pour 0 variables dans $s7
-	add $sp, $sp,0
+# Réserver la place pour 2 variables dans $s7
+	add $sp, $sp,-8
 
-# Affectation  a = Appel de la fonction nomfonction
 #Fonction
+fonc1:
+#Empile l'adresse de retour
+	sw $ra, 0($sp)
+	add $sp, $sp, -4
+
+#Empilement chainage dynamique
+	sw $s7, 0($sp)
+	add $sp, $sp, -4
+
+#Empilement de l'id de la region
+	li $t8, 0
+	sw $t8, 0($sp)
+	add $sp, $sp, -4
+
+#Deplacement de la base
+	move $s7, $sp
+
+#Allocation des variables 
+	add $sp, $sp , -4
+# initialisation de toutes les variables a 0
+	sw $zero, -0($s7)
+#Instruction dans la fonction
+#Retour de fonction
+#Met 10 dans $v0
+	li $a0, 10
+
+#Jump à la fin du programme
+	j fin1
+
+# Affectation  a = 5
+	li $a0, 5
 	sw $a0, 0($s7) # Affectation
 
-# Ecriture de a
+# Ecriture de a + Appel de la fonction fonc1
+	# Operation : a + Appel de la fonction fonc1
 	lw $a0, 0($s7)
+
+	# Empilement de $a0
+	sw $a0, 0($sp)
+	add $sp, $sp, -4
+#Appel de fonction
+#Allocation pour la valeur retournée
+	add $sp, $sp, -4
+
+#Jump vers le label de la fonction fonc1
+	jal fonc1
+
+fin1:#Depile dans $v0
+	add $sp, $sp, 4
+	lw $v0, 0($sp)
+
+
+	# Dépilement de $a0
+	add $sp, $sp, 4
+	lw $t8, ($sp)
+	add $a0, $t8, $a0 # Addition
 	li $v0, 1
 	syscall
 	addi $a0, $0, 0xA 

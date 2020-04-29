@@ -15,7 +15,6 @@ public class Bloc
     private Bloc blocPere;
     private ArrayList<Bloc> blocsFils;
     private int cpt = 0;
-    private final int tailleType = 4;
     private boolean instructions = false;
     private boolean blocRacine;
 
@@ -87,7 +86,7 @@ public class Bloc
 
     public int getTailleVariable()
     {
-        return table.size()*-tailleType;
+        return table.size()*-TDS.getInstance().getTailleType();
     }
 
     public int getCompteur()

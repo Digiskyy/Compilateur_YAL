@@ -5,6 +5,8 @@ public class TDS
 {
     private Bloc blocActuel;
     private static TDS instance = new TDS();
+    private int cpt = 0;
+    private final int tailleType = 4;
 
     private TDS()
     {
@@ -21,17 +23,13 @@ public class TDS
      */
     public void entreeBloc()
     {
-        System.out.println("ENTREE");
         if(blocActuel == null)
             blocActuel = new Bloc(); // Bloc racine
         else
         {
-            // blocActuel = new Bloc(blocActuel); // Bloc fils
-            System.out.println(blocActuel);
-            Bloc b = new Bloc(blocActuel);
-            blocActuel = b;
-            System.out.println(blocActuel);
+            blocActuel = new Bloc(blocActuel);
         }
+        cpt++;
     }
 
     /**
@@ -39,15 +37,20 @@ public class TDS
      */
     public void sortieBloc()
     {
-        System.out.println("SORTIE");
-        System.out.println("ZOUZOU" + blocActuel);
-        System.out.println(blocActuel.getBlocPere());
         blocActuel = blocActuel.getBlocPere();
-        System.out.println("ZaZa" + blocActuel);
+        cpt--;
     }
 
     public Bloc getBlocActuel()
     {
         return blocActuel;
+    }
+
+    public int getCpt() {
+        return cpt;
+    }
+
+    public int getTailleType() {
+        return tailleType;
     }
 }

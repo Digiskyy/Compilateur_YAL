@@ -1,12 +1,12 @@
-programme fonctiontest
+programme proggy
 debut
-entier a;
-entier fonction nomfonction()
-debut
-    entier b;
-    b = 10;
-    retourne b;
-fin
-a = nomfonction();
-ecrire a;
+  entier a;
+  fonction fonc1()
+  debut
+    retourne 10;
+  fin
+
+  a = 5;
+  ecrire fonc1();
+
 fin
